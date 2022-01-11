@@ -10,24 +10,27 @@ const port = process.env.PORT || 8000;
 
 const secret = process.env.SECRET || "toiny marsupial gargantuan thirst"
 
+console.log(process.env)
+
 // Middleware //
 app.use(express.json())
 app.use(morgan('dev'))
 
 // Connect to DB //
 
-mongoose.connect(
-    'mongodb://localhost:27017/diary-db',
-    {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useCreateIndex: true,
-        useFindAndModify: false
-    },
-    () => console.log('Connected to the DB')
-)
+// mongoose.connect(
+//     'mongodb://localhost:27017/diary-db',
+//     {
+//         useNewUrlParser: true,
+//         useUnifiedTopology: true,
+//         useCreateIndex: true,
+//         useFindAndModify: false
+//     },
+//     () => console.log('Connected to the DB')
+// )
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true })
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true }, 
+    console.log('Connected to the DB'))
 
 app.use(
     '/auth',
