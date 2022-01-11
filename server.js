@@ -18,16 +18,16 @@ app.use(morgan('dev'))
 
 // Connect to DB //
 
-// mongoose.connect(
-//     'mongodb://localhost:27017/diary-db',
-//     {
-//         useNewUrlParser: true,
-//         useUnifiedTopology: true,
-//         useCreateIndex: true,
-//         useFindAndModify: false
-//     },
-//     () => console.log('Connected to the DB')
-// )
+mongoose.connect(
+    'mongodb://localhost:27017/diary-db',
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        useFindAndModify: false
+    },
+    () => console.log('Connected to the DB')
+)
 
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true }, 
     console.log('Connected to the DB'))
@@ -64,4 +64,6 @@ app.get('*', (req, res) => {
 })
 
 // Server listen //
-port
+app.listen(port, () => {
+    console.log('Listening on ' + port)
+})
