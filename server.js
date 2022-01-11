@@ -8,6 +8,8 @@ const path = require('path')
 
 const port = process.env.PORT || 8000;
 
+const secret = process.env.SECRET || "toiny marsupial gargantuan thirst"
+
 // Middleware //
 app.use(express.json())
 app.use(morgan('dev'))
@@ -25,16 +27,18 @@ mongoose.connect(
     () => console.log('Connected to the DB')
 )
 
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true })
+
 app.use(
     '/auth',
     require('./routes/authRouter.js'),
     expressJwt({
-        secret: process.env.SECRET,
+        secret: secret,
         algorithms: ['HS256']
     })
 )
 app.use('/api', expressJwt({
-    secret: process.env.SECRET,
+    secret: secret,
     algorithms: ['HS256']
 }))
 
