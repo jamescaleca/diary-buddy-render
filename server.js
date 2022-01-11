@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 const expressJwt = require('express-jwt')
 const path = require('path')
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8000;
 
 // Middleware //
 app.use(express.json())
