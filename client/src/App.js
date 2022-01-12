@@ -15,10 +15,10 @@ import BlankEntryPage from "./components/BlankEntryPage"
 import { UserContext } from './contexts/UserProvider'
 
 export default function App() {
-    const { token, logout } = useContext(UserContext)
+    const { token } = useContext(UserContext)
     return (
         <>
-            {token && <Navbar logout={logout} />}
+            {token && <Navbar />}
             <Switch>
                 <Route 
                     exact path='/'

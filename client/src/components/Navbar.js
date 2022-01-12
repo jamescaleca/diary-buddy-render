@@ -1,12 +1,15 @@
 import React, { useContext } from "react"
 import { Link } from "react-router-dom"
 import { EntriesContext } from "../contexts/userEntryContext"
+import { UserContext } from "../contexts/UserProvider"
 // import Logo from "../assets/Logo.png"
 import DiaryLogo from "../assets/DiaryLogo.svg"
 import "../styles.css"
 
 function Navbar() {
-    const {filterEntries, search, setSearch} = useContext(EntriesContext)
+    const { filterEntries, search, setSearch } = useContext(EntriesContext)
+
+    const { logout } = useContext(UserContext)
 
     return (
         <header>
@@ -48,6 +51,9 @@ function Navbar() {
                     </li>
                     <li>
                         <Link className='nav-link' to='/'>Home</Link>
+                    </li>
+                    <li>
+                        <button onClick={logout}>Logout</button>
                     </li>
                 </ul>
             </nav>
