@@ -36,7 +36,7 @@ export default function Auth() {
 
     return (
         <div className='auth-container'>
-            <h1 id='site-title'>Rock The Vote</h1>
+            <h1 id='site-title'>Diary Buddy</h1>
             { !toggle ? 
                 <>
                     <AuthForm 
