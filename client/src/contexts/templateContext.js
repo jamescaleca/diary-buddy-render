@@ -17,29 +17,26 @@ function TemplateContextProvider(props) {
         history.goBack()
     }
 
-    function dailyAffirmation() {
+    const dailyAffirmation =
         // new Date() is a date constructor that gives you the month, day, year, hours, seconds, and milliseconds
         // The getDate() method returns the day of the month for the specified date according to local time.
-        return affirmations.map(message => 
-            message.date === dayOfMonth ? message.affirmation : null 
+        affirmations.map(message => {
+            return message.date === dayOfMonth ? message.affirmation : null 
+        }
         )
-    }
+    
 
-    function dailyPromptOne() {
-        return journalPromptsOne.map(journalOne => 
+    const dailyPromptOne = journalPromptsOne.map(journalOne => 
             journalOne.date === dayOfMonth ? journalOne.prompts : null 
         )
-    }
-    function dailyPromptTwo() {
-        return journalPromptsTwo.map(journalTwo => 
+    
+    const dailyPromptTwo = journalPromptsTwo.map(journalTwo => 
             journalTwo.date === dayOfMonth ? journalTwo.prompts : null 
         )
-    }
-    function dailyPromptThree() {
-        return journalPromptsThree.map(journalThree => 
+    
+    const dailyPromptThree = journalPromptsThree.map(journalThree => 
             journalThree.date === dayOfMonth ? journalThree.prompts : null 
         )
-    }
     
     return (
 

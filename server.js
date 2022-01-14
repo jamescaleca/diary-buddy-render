@@ -21,10 +21,10 @@ app.use(morgan('dev'))
 // mongoose.connect(
 //     'mongodb://localhost:27017/diary-db',
 //     {
-        // useNewUrlParser: true,
-        // useUnifiedTopology: true,
-        // useCreateIndex: true,
-        // useFindAndModify: false
+//         useNewUrlParser: true,
+//         useUnifiedTopology: true,
+//         useCreateIndex: true,
+//         useFindAndModify: false
 //     },
 //     () => console.log('Connected to the DB')
 // )
@@ -51,7 +51,7 @@ app.use('/api', expressJwt({
 }))
 
 // Routes //
-app.use('/entries', require('./routes/entryRouter.js'))
+app.use('/api/entries', require('./routes/entryRouter.js'))
 
 app.use(express.static(path.join(__dirname, 'client', 'build')))
 

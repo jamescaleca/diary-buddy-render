@@ -1,10 +1,22 @@
-import React from "react"
+import React, { useContext, useEffect, useState } from "react"
 import Navbar from "./Navbar"
 import "../styles.css"
 import { useEntries } from "../contexts/userEntryContext"
+import { UserContext } from "../contexts/UserProvider"
 
 function UserEntries() {
-    const {allEntries} = useEntries()
+    const { 
+        getUserEntries, 
+        allEntries, 
+        editToggle, 
+        setEditToggle, 
+        toggle 
+    } = useContext(UserContext)
+
+    useEffect(() => {
+        getUserEntries()
+    }, [])
+
     return (
         <>
             <Navbar />

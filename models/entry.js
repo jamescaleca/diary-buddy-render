@@ -8,20 +8,27 @@ const entrySchema = new Schema({
         type: Date,
         // required: true
     },
+    affirmation: String,
     location: String,
     entry: {
         type: String,
         // required: true
     },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    journalPrompt: String,
     image: String,
     mood: String,
     positive: String,
     negative: String,
+    
     // isEntry: {
     //     type: Boolean,
     //     default: true
-    // },
-
+    // }
 })
 
 module.exports = mongoose.model('Entry', entrySchema)

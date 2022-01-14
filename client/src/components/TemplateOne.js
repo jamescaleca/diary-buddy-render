@@ -1,6 +1,7 @@
 import React, {useContext, useState} from "react"
 import {TemplateContext} from "../contexts/templateContext"
 import { useEntries } from "../contexts/userEntryContext"
+import { UserContext } from "../contexts/UserProvider"
 import Navbar from "./Navbar"
 
 function TemplateOne(props) {
@@ -8,24 +9,36 @@ function TemplateOne(props) {
 
     const initTemplateInputs = 
     {
+        affirmation: dailyAffirmation || '',
+        prompt: dailyPromptOne || '',
         entry: props.entry || '',
         positive: props.positive || '',
         negative: props.negative || '',
         image: props.image || ''
     }
     const [promptInputs, setPromptInputs] = useState(initTemplateInputs)
-    const { postEntry, submitBtnRedirect } = useEntries()
+    const { submitBtnRedirect } = useEntries()
+    const { editToggle, inputs, setInputs, editEntry, postEntry, initInputs } = useContext(UserContext)
 
     function handleChange(e) {
         const { name, value } = e.target
-        setPromptInputs(prevTempInputs => ({...prevTempInputs, [name]: value}))
-        console.log("inputs", promptInputs)
+        setInputs(prevTempInputs => ({...prevTempInputs, [name]: value}))
+        console.log("inputs", inputs)
     }
+
+    // function handleSubmit(e) {
+    //     e.preventDefault()
+    //     postEntry(promptInputs)
+    //     setPromptInputs(initTemplateInputs)
+    //     submitBtnRedirect()
+    // }
 
     function handleSubmit(e) {
         e.preventDefault()
-        postEntry(promptInputs)
-        setPromptInputs(initTemplateInputs)
+        editToggle ?
+        editEntry(inputs, props._id) :
+        postEntry(inputs, props._id)
+        setInputs(initInputs)
         submitBtnRedirect()
     }
 
@@ -35,7 +48,7 @@ function TemplateOne(props) {
             <div className='content'>
                 <div className='content-container'>
                     <h3 className='content-h3'>Affirmation for Today:</h3> 
-                        <h4 className='content-h4'>{dailyAffirmation()}</h4>
+                        <h4 className='content-h4'>{dailyAffirmation}</h4>
                     <form onSubmit={handleSubmit} className='new-entry-form'>
                         <label for='date'>Date this entry </label>
                         <div className='nativeDatePicker'>
@@ -52,7 +65,7 @@ function TemplateOne(props) {
                             id='location'
                             name='location'
                             className='location'
-                            value={promptInputs.location}
+                            value={inputs.location}
                             onChange={handleChange}
                             placeholder='Location'
                         />
@@ -62,7 +75,7 @@ function TemplateOne(props) {
                             id='image'
                             name='image'
                             className='image'
-                            value={promptInputs.image}
+                            value={inputs.image}
                             onChange={handleChange}
                             placeholder='IMG URL'
                         />
@@ -84,7 +97,7 @@ function TemplateOne(props) {
                             <option value='awful'>😢awful</option>
                         </select><br/>
                         <h3 className='content-h3'>Journal Prompt</h3>
-                        <p>{dailyPromptOne()}</p>
+                        <p>{dailyPromptOne}</p>
                         <textarea
                             name='entry'
                             className='journal-prompt'

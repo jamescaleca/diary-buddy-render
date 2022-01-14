@@ -2,6 +2,7 @@ import React, { useEffect, useState, createContext, useContext } from "react"
 import {useHistory} from "react-router-dom"
 import axios from "axios"
 import Entry from "../components/Entry"
+import { UserContext } from './UserProvider'
 import "../styles.css"
 
 const EntriesContext = createContext()
@@ -11,14 +12,16 @@ function EntriesContextProvider(props) {
     const [search, setSearch] = useState('')
     const [searchData, setSearchData] = useState([])
 
+    const { deleteEntry, editEntry } = useContext(UserContext)
+
     function getEntries() {
-        axios.get("/entries")
+        axios.get("/api/entries")
         .then(res => setEntries(res.data))
         .catch(err => console.log(err.response.data.errMsg))
     }
 
     function getEntryById(entryId) {
-        axios.get(`/entries/${entryId}`)
+        axios.get(`/api/entries/${entryId}`)
             .then(res => setEntries(res.data))
             .catch(err => console.log(err.response.data.errMsg))
     }
@@ -29,46 +32,47 @@ function EntriesContextProvider(props) {
 
     function postEntry(newEntry) {
         console.log("post new entry", newEntry)
-        axios.post("/entries", newEntry)
+        axios.post("/api/entries", newEntry)
             .then(res => {
                 setEntries(prevEntries => [...prevEntries, res.data])
             })
             .catch(err => console.log(err))
     }
 
-    function deleteEntry(entryId) {
-        axios.delete(`/entries/${entryId}`)
-            .then(res => {
-                setEntries(prevEntries => prevEntries.filter(entry => entry.id !== entryId))
-                axios.get('/entries')
-                    .then(res => setEntries(res.data))
-            })
-            .catch(err => console.log(err))
-    }
+    // function deleteEntry(entryId) {
+    //     axios.delete(`/entries/${entryId}`)
+    //         .then(res => {
+    //             setEntries(prevEntries => prevEntries.filter(entry => entry.id !== entryId))
+    //             axios.get('/entries')
+    //                 .then(res => setEntries(res.data))
+    //         })
+    //         .catch(err => console.log(err))
+    // }
 
-    function editEntry(updates, entryId) {
-        axios.put(`/entries/${entryId}`, updates)
-            .then(res => {
-                setEntries(prevEntries => prevEntries.map(entry => entry._id !== entryId ? entry : res.data))
-            })
-            .catch(err => console.log(err))
-    }
+    // function editEntry(updates, entryId) {
+    //     axios.put(`/entries/${entryId}`, updates)
+    //         .then(res => {
+    //             setEntries(prevEntries => prevEntries.map(entry => entry._id !== entryId ? entry : res.data))
+    //         })
+    //         .catch(err => console.log(err))
+    // }
 
-    const allEntries = entries.map(entry => 
-        <li>
-            <Entry 
-                {...entry} 
-                key={entry.title}
-                deleteEntry={deleteEntry}
-                editEntry={editEntry}
-            />
-        </li>
-    )
+    // const allEntries = entries.map(entry => 
+    //     <li>
+    //         <Entry 
+    //             {...entry} 
+    //             key={entry.title}
+    //             deleteEntry={deleteEntry}
+    //             editEntry={editEntry}
+
+    //         />
+    //     </li>
+    // )
 
     // For Entry Search
     const filterEntries = (e) => {
         axios
-            .get(`/entries/search?entry=${search}`)
+            .get(`/api/entries/search?entry=${search}`)
             .then(res => {
                 const searchData = res.data
                 setSearchData(searchData)
@@ -95,12 +99,11 @@ function EntriesContextProvider(props) {
     const history = useHistory()
 
     function submitBtnRedirect() {
-        history.push('/user-entries')
+        history.push('/api/entries')
     }
 
     return (
         <EntriesContext.Provider value={{
-            allEntries,
             searchResults,
             search,
             setSearch,

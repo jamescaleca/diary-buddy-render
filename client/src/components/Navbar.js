@@ -9,7 +9,7 @@ import "../styles.css"
 function Navbar() {
     const { filterEntries, search, setSearch } = useContext(EntriesContext)
 
-    const { logout } = useContext(UserContext)
+    const { logout, user: { username } } = useContext(UserContext)
 
     return (
         <header>
@@ -44,7 +44,7 @@ function Navbar() {
                         <Link className='nav-link' to='/templates'>Templates</Link>
                     </li>
                     <li>
-                        <Link className='nav-link' to='/user-entries'>Your entries</Link>
+                        <Link className='nav-link' to='/api/entries'>Your entries</Link>
                     </li>
                     <li>
                         <Link className='nav-link' to='/new-entry'>+</Link>
@@ -57,7 +57,7 @@ function Navbar() {
                     </li>
                 </ul>
             </nav>
-            <label for='nav-toggle' className='nav-toggle-label'>
+            <label htmlFor='nav-toggle' className='nav-toggle-label'>
                 <span></span>
             </label>
         </header>

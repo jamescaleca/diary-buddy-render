@@ -4,7 +4,7 @@ import "../styles.css"
 import { useEntries } from "../contexts/userEntryContext"
 
 function Entry(props) {
-    const {date, location, entry, image, mood, _id, positive, negative} = props
+    const {date, location, entry, image, mood, _id, positive, negative, affirmation, prompt} = props
     const {deleteEntry, editEntry} = useEntries()
     const [editToggle, setEditToggle] = useState(false)
 
@@ -22,6 +22,7 @@ function Entry(props) {
                 <img src={image} alt='img' className='entry-image'></img>
                 }
             </div>
+            <h3>{affirmation === null ? <>{null}</> : <><b>Affirmation:</b>  {affirmation}</>}</h3>
             <p>{date === null ? <>{null}</> : <><b>Date:</b> {date}</> }</p>
             {/* date is a string */}
             <p>{{location}.length > 0 ? <><b>Location:</b> {location}</> : <>{null}</>}</p>

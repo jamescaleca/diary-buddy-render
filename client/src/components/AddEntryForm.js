@@ -1,21 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useEntries } from '../contexts/userEntryContext.js'
+import { UserContext } from '../contexts/UserProvider.js'
 import '../styles.css'
 
 function AddEntryForm(props) {
-    const initInputs = 
-        {
-            date: props.date || '',
-            location: props.location || '',
-            entry: props.entry || '',
-            image: props.image || '',
-            mood: props.mood || '',
-            positive: props.positive || '',
-            negative: props.negative || ''
-        }
-        
-    const [inputs, setInputs] = useState(initInputs)
-    const { postEntry, editEntry, submitBtnRedirect } = useEntries()
+    // const [inputs, setInputs] = useState(initInputs)
+    const { submitBtnRedirect } = useEntries()
+    const { postEntry, editEntry, editToggle, initInputs, inputs, setInputs } = useContext(UserContext)
 
     function handleChange(e) {
         const { name, value } = e.target
@@ -25,7 +16,9 @@ function AddEntryForm(props) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        editEntry(inputs, props._id)
+        editToggle ?
+        editEntry(inputs, props._id) :
+        postEntry(inputs, props._id)
         setInputs(initInputs)
         submitBtnRedirect()
     }
@@ -33,7 +26,7 @@ function AddEntryForm(props) {
     return (
         <>
             <form onSubmit={handleSubmit} className='new-entry-form'>
-                <div class='nativeDatePicker'>
+                <div className='nativeDatePicker'>
                     <label for='date'>Date this entry: </label>
                     <input 
                         value={inputs.date}
@@ -42,7 +35,7 @@ function AddEntryForm(props) {
                         name='date' 
                         onChange={handleChange}
                     />
-                    <span class='validity'></span>
+                    <span className='validity'></span>
                 </div>
                 <input 
                     type='text'

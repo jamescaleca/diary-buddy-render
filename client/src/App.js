@@ -55,7 +55,7 @@ export default function App() {
                     token={token}
                 />
                 <ProtectedRoute 
-                    exact path='/user-entries' 
+                    exact path='/api/entries' 
                     component={UserEntries}
                     redirectTo='/'
                     token={token}
