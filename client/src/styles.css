@@ -184,12 +184,14 @@ nav li {
 .sp-submit-btn:hover,
 .delete-btn:hover,
 .edit-btn:hover,
-.logout-btn:hover {
+.logout-btn:hover,
+.member-btn:hover {
     color: var(--clr-neutral-100);
 }
 
 .sp-submit-btn,
-.logout-btn {
+.logout-btn,
+.member-btn {
     background: var(--background);
     color: var(--clr-primary-200);
     box-shadow: 2px 2px 2px 1px var(--clr-neutral-900);

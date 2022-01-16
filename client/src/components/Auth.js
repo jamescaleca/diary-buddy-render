@@ -35,31 +35,33 @@ export default function Auth() {
     }
 
     return (
-        <div className='auth-container'>
-            <h1 id='site-title'>Diary Buddy</h1>
-            { !toggle ? 
-                <>
-                    <AuthForm 
-                        handleChange={handleChange}
-                        handleSubmit={handleSignup}
-                        inputs={inputs}
-                        btnText='Sign up'
-                        errMsg={errMsg}
-                    />
-                    <p onClick={toggleForm}>Already a member?</p>
-                </>
-            :
-                <>
-                    <AuthForm 
-                        handleChange={handleChange}
-                        handleSubmit={handleLogin}
-                        inputs={inputs}
-                        btnText='Login'
-                        errMsg={errMsg}
-                    />
-                    <p onClick={toggleForm}>Not a member?</p>
-                </>
-            }
+        <div className='content'>
+            <div className='content-container'>
+                <h1 id='site-title'>Diary Buddy</h1>
+                { !toggle ? 
+                    <>
+                        <AuthForm 
+                            handleChange={handleChange}
+                            handleSubmit={handleSignup}
+                            inputs={inputs}
+                            btnText='Sign up'
+                            errMsg={errMsg}
+                        />
+                        <button className='member-btn' onClick={toggleForm}>Already a member?</button>
+                    </>
+                :
+                    <>
+                        <AuthForm 
+                            handleChange={handleChange}
+                            handleSubmit={handleLogin}
+                            inputs={inputs}
+                            btnText='Login'
+                            errMsg={errMsg}
+                        />
+                        <button className='member-btn' onClick={toggleForm}>Not a member?</button>
+                    </>
+                }
+            </div>
         </div>
     )
 }
