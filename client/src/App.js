@@ -1,6 +1,5 @@
 import React, { useContext } from "react"
 import { Switch, Route, Redirect } from "react-router-dom"
-import axios from "axios"
 import Auth from './components/Auth'
 import Home from "./components/Home"
 import Navbar from './components/Navbar'
@@ -8,14 +7,15 @@ import ProtectedRoute from "./components/ProtectedRoute"
 import FilteredEntries from "./components/FilteredEntries"
 import UserEntries from "./components/UserEntries"
 import Templates from "./components/Templates"
-import TemplateOne from "./components/TemplateOne"
-import TemplateTwo from "./components/TemplateTwo"
-import TemplateThree from "./components/TemplateThree"
+import Template from "./components/Template"
 import BlankEntryPage from "./components/BlankEntryPage"
 import { UserContext } from './contexts/UserProvider'
+import { TemplateContext } from "./contexts/templateContext"
 
 export default function App() {
     const { token } = useContext(UserContext)
+    const { dailyAffirmation, dailyPromptOne, dailyPromptTwo, dailyPromptThree } = useContext(TemplateContext)
+
     return (
         <>
             {token && <Navbar />}
@@ -38,19 +38,22 @@ export default function App() {
                 />
                 <ProtectedRoute 
                     exact path='/template-one'
-                    component={TemplateOne}
+                    component={Template}
+                    dailyPrompt={dailyPromptOne}
                     redirectTo='/'
                     token={token}
                 />
                 <ProtectedRoute 
                     exact path='/template-two'
-                    component={TemplateTwo}
+                    component={Template}
+                    dailyPrompt={dailyPromptTwo}
                     redirectTo='/'
                     token={token}
                 />
                 <ProtectedRoute 
                     exact path='/template-three'
-                    component={TemplateThree}
+                    component={Template}
+                    dailyPrompt={dailyPromptThree}
                     redirectTo='/'
                     token={token}
                 />

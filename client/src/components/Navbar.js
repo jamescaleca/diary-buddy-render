@@ -53,7 +53,7 @@ function Navbar() {
                         <Link className='nav-link' to='/'>Home</Link>
                     </li>
                     <li>
-                        <button onClick={logout}>Logout</button>
+                        <button className='logout-btn' onClick={logout}>Logout</button>
                     </li>
                 </ul>
             </nav>

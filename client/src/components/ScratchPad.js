@@ -1,5 +1,7 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { useEntries } from "../contexts/userEntryContext"
+import { UserContext } from "../contexts/UserProvider"
+
 import '../styles.css'
 
 function ScratchPad(props) {
@@ -10,7 +12,8 @@ function ScratchPad(props) {
         }
 
     const [inputs, setInputs] = useState(initInputs)
-    const { postEntry, submitBtnRedirect } = useEntries()
+    const { submitBtnRedirect } = useEntries()
+    const { postEntry } = useContext(UserContext)
 
     function handleChange(e) {
         const { name, value } = e.target

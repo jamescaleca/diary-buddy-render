@@ -19,7 +19,7 @@ const entrySchema = new Schema({
         ref: 'User',
         required: true
     },
-    journalPrompt: String,
+    prompt: String,
     image: String,
     mood: String,
     positive: String,

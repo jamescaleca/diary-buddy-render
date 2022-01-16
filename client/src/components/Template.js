@@ -1,46 +1,52 @@
-import React, {useContext, useState} from "react"
+import React, {useContext, useState, useEffect} from "react"
 import {TemplateContext} from "../contexts/templateContext"
 import { useEntries } from "../contexts/userEntryContext"
 import { UserContext } from "../contexts/UserProvider"
 import Navbar from "./Navbar"
 
 function TemplateOne(props) {
-    const {goBack, dailyAffirmation, dailyPromptOne} = useContext(TemplateContext)
+    const { submitBtnRedirect } = useEntries()
+    const { editToggle, editEntry, postEntry } = useContext(UserContext)
+    const { goBack, dailyAffirmation } = useContext(TemplateContext)
+    const { dailyPrompt } = props
+
+    console.log(dailyPrompt)
 
     const initTemplateInputs = 
     {
-        affirmation: dailyAffirmation || '',
-        prompt: dailyPromptOne || '',
-        entry: props.entry || '',
-        positive: props.positive || '',
-        negative: props.negative || '',
-        image: props.image || ''
+        affirmation: dailyAffirmation[0].affirmation,
+        prompt: dailyPrompt[0].prompts,
+        date: '',
+        location: '',
+        mood: '',
+        entry: '',
+        positive: '',
+        negative: '',
+        image: ''
     }
-    const [promptInputs, setPromptInputs] = useState(initTemplateInputs)
-    const { submitBtnRedirect } = useEntries()
-    const { editToggle, inputs, setInputs, editEntry, postEntry, initInputs } = useContext(UserContext)
+    const [ promptInputs, setPromptInputs ] = useState(initTemplateInputs)
 
     function handleChange(e) {
         const { name, value } = e.target
-        setInputs(prevTempInputs => ({...prevTempInputs, [name]: value}))
-        console.log("inputs", inputs)
+        setPromptInputs(prevTempInputs => ({
+            ...prevTempInputs, 
+            [name]: value
+        }))
+        console.log("inputs", promptInputs)
     }
-
-    // function handleSubmit(e) {
-    //     e.preventDefault()
-    //     postEntry(promptInputs)
-    //     setPromptInputs(initTemplateInputs)
-    //     submitBtnRedirect()
-    // }
 
     function handleSubmit(e) {
         e.preventDefault()
         editToggle ?
-        editEntry(inputs, props._id) :
-        postEntry(inputs, props._id)
-        setInputs(initInputs)
+        editEntry(promptInputs, props._id) :
+        postEntry(promptInputs, props._id)
         submitBtnRedirect()
     }
+
+    useEffect(() => {
+        setPromptInputs(initTemplateInputs)
+        console.log(promptInputs)
+    }, [])
 
     return(
         <div>
@@ -48,7 +54,7 @@ function TemplateOne(props) {
             <div className='content'>
                 <div className='content-container'>
                     <h3 className='content-h3'>Affirmation for Today:</h3> 
-                        <h4 className='content-h4'>{dailyAffirmation}</h4>
+                        <h4 className='content-h4'>{dailyAffirmation[0].affirmation}</h4>
                     <form onSubmit={handleSubmit} className='new-entry-form'>
                         <label for='date'>Date this entry </label>
                         <div className='nativeDatePicker'>
@@ -57,6 +63,7 @@ function TemplateOne(props) {
                                 id='date' 
                                 name='date' 
                                 onChange={handleChange}
+                                value={promptInputs.date}
                             /> 
                         </div>
                         <label for='location'>Location </label>
@@ -65,7 +72,7 @@ function TemplateOne(props) {
                             id='location'
                             name='location'
                             className='location'
-                            value={inputs.location}
+                            value={promptInputs.location}
                             onChange={handleChange}
                             placeholder='Location'
                         />
@@ -75,7 +82,7 @@ function TemplateOne(props) {
                             id='image'
                             name='image'
                             className='image'
-                            value={inputs.image}
+                            value={promptInputs.image}
                             onChange={handleChange}
                             placeholder='IMG URL'
                         />
@@ -85,25 +92,26 @@ function TemplateOne(props) {
                             id='mood'
                             name='mood'
                             className='mood'
-                            // value={inputs.mood}
+                            value={promptInputs.mood}
                             onChange={handleChange}
                             placeholder='Mood'
                         >
                             <option value=''>-Select Mood-</option>
-                            <option value='rad'>😀rad</option>
-                            <option value='good'>🙂good</option>
-                            <option value='meh'>😐meh</option>
-                            <option value='bad'>🙁bad</option>
-                            <option value='awful'>😢awful</option>
+                            <option value='😀rad'>😀rad</option>
+                            <option value='🙂good'>🙂good</option>
+                            <option value='😐meh'>😐meh</option>
+                            <option value='🙁bad'>🙁bad</option>
+                            <option value='😢awful'>😢awful</option>
                         </select><br/>
                         <h3 className='content-h3'>Journal Prompt</h3>
-                        <p>{dailyPromptOne}</p>
+                        <p>{dailyPrompt[0].prompts}</p>
                         <textarea
                             name='entry'
                             className='journal-prompt'
                             rows='10'
                             cols='40'
                             wrap='soft'
+                            value={promptInputs.entry}
                             onChange={handleChange}
                             placeholder='Type a response to the journal prompt here...'
                         ></textarea>
@@ -114,6 +122,7 @@ function TemplateOne(props) {
                             rows='10'
                             cols='40'
                             wrap='soft'
+                            value={promptInputs.positive}
                             onChange={handleChange}
                             placeholder='Tell me something positive that happened today...'
                         ></textarea>
@@ -124,6 +133,7 @@ function TemplateOne(props) {
                             rows='10'
                             cols='40'
                             wrap='soft'
+                            value={promptInputs.negative}
                             onChange={handleChange}
                             placeholder='Tell me something negative that happened today...'
                         ></textarea>

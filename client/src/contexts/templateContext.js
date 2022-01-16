@@ -20,23 +20,25 @@ function TemplateContextProvider(props) {
     const dailyAffirmation =
         // new Date() is a date constructor that gives you the month, day, year, hours, seconds, and milliseconds
         // The getDate() method returns the day of the month for the specified date according to local time.
-        affirmations.map(message => {
-            return message.date === dayOfMonth ? message.affirmation : null 
-        }
-        )
+        affirmations.filter(function(message) {
+            // return message.date === dayOfMonth ? message.affirmation : null 
+            if(message.date === dayOfMonth){
+                return message
+            }
+        })
     
 
-    const dailyPromptOne = journalPromptsOne.map(journalOne => 
-            journalOne.date === dayOfMonth ? journalOne.prompts : null 
-        )
+    const dailyPromptOne = journalPromptsOne.filter(function(journalOne){
+        if(journalOne.date === dayOfMonth){return journalOne}
+    })
     
-    const dailyPromptTwo = journalPromptsTwo.map(journalTwo => 
-            journalTwo.date === dayOfMonth ? journalTwo.prompts : null 
-        )
+    const dailyPromptTwo = journalPromptsTwo.filter(function(journalTwo){ 
+        if(journalTwo.date === dayOfMonth){return journalTwo}
+    })
     
-    const dailyPromptThree = journalPromptsThree.map(journalThree => 
-            journalThree.date === dayOfMonth ? journalThree.prompts : null 
-        )
+    const dailyPromptThree = journalPromptsThree.filter(function(journalThree){ 
+        if(journalThree.date === dayOfMonth){return journalThree}
+    })
     
     return (
 

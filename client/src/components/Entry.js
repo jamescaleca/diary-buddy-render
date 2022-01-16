@@ -17,20 +17,51 @@ function Entry(props) {
     return(
         <div className="entry">
             <div className='entry-image-container'>
-                {image === '' ? <>{null}</> 
-                : 
-                <img src={image} alt='img' className='entry-image'></img>
+                {image === '' ? <>{null}</> : image === undefined ? <>{null}</> :
+                    <img src={image} alt='img' className='entry-image'/>
                 }
             </div>
-            <h3>{affirmation === null ? <>{null}</> : <><b>Affirmation:</b>  {affirmation}</>}</h3>
-            <p>{date === null ? <>{null}</> : <><b>Date:</b> {date}</> }</p>
+            <h3 className='affirmation'>
+                {affirmation === null ? <>{null}</> : affirmation === '' ? <>{null}</> : affirmation === undefined ? <>{null}</> :
+                    <><b>Affirmation: </b><br></br>{affirmation}</>
+                }
+            </h3>
+            <p>
+                {date === null ? <>{null}</> : <><b>Date:</b> {date}</> }
+            </p>
             {/* date is a string */}
-            <p>{{location}.length > 0 ? <><b>Location:</b> {location}</> : <>{null}</>}</p>
-            <p>{mood === '' ? null : mood === undefined ? null : <><b>Mood</b>: {mood}</> }</p>
+            <p>
+                {{location}.length > 0 ? <><b>Location:</b> {location}</> : <>{null}</>}
+            </p>
+            <p>
+                {mood === '' ? null : mood === undefined ? null : 
+                    <><b>Mood</b>: {mood}</> 
+                }
+            </p>
             {/* <p>{!isEntry ? <>Prompt: {prompt}</> : <><b>Entry:</b> {entry}</>}</p> */}
             <p>Entry: {entry}</p>
-            <p>{positive === '' ? null : positive === undefined ? null : <><b>Positives</b>: {positive}</>}</p>
-            <p>{negative === '' ? null : negative === undefined ? null : <><b>Negatives</b>: {negative}</>}</p>
+            <p>
+                {positive === '' ? null : positive === undefined ? null : 
+                    <><b>Positives</b>: {positive}</>
+                }
+            </p>
+            <p>
+                {negative === '' ? null : negative === undefined ? null : 
+                    <><b>Negatives</b>: {negative}</>
+                }
+            </p>
+            <p>{prompt === '' ? null : prompt === undefined ? null : 
+                <>
+                    <b>Prompt: {prompt}</b>
+                    
+                </>
+            }</p>
+            <p>
+                {prompt === '' ? null: prompt === undefined ? null :
+                    <div className='prompt-entry'>{entry}</div>
+                }
+            </p>
+            
             
             {/* <p>{text === "" ? null : <>Text: {text}</>}</p> */}
         
