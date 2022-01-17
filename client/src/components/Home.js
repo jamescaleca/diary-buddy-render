@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import Navbar from "./Navbar"
 import ScratchPad from "./ScratchPad"
-import "../styles.css"
+import "../styles/styles.css"
 import { UserContext } from "../contexts/UserProvider"
 
 function Home() {
@@ -10,7 +10,6 @@ function Home() {
 
     return (
         <>
-            <Navbar />
             <div className='content'>
                 <div className='content-container'>
                     <h2 className='content-h2'>{`Welcome, ${username}`}</h2>

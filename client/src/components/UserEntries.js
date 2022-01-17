@@ -1,17 +1,9 @@
-import React, { useContext, useEffect, useState } from "react"
-import Navbar from "./Navbar"
-import "../styles.css"
-import { useEntries } from "../contexts/userEntryContext"
+import React, { useContext, useEffect } from "react"
 import { UserContext } from "../contexts/UserProvider"
+import "../styles/styles.css"
 
 function UserEntries() {
-    const { 
-        getUserEntries, 
-        allEntries, 
-        editToggle, 
-        setEditToggle, 
-        toggle 
-    } = useContext(UserContext)
+    const { getUserEntries, allEntries } = useContext(UserContext)
 
     useEffect(() => {
         getUserEntries()
@@ -19,7 +11,6 @@ function UserEntries() {
 
     return (
         <>
-            <Navbar />
             <div className='content'>
                 <div className='content-container'>
                     <h1 className='content-h1'>Your entries</h1>

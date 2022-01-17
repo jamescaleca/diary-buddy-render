@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react"
 import { useEntries } from "../contexts/userEntryContext"
 import { UserContext } from "../contexts/UserProvider"
 
-import '../styles.css'
+import '../styles/styles.css'
 
 function ScratchPad(props) {
     const initInputs = 

@@ -1,10 +1,11 @@
 import React, { useContext } from "react"
 import { useEntries } from "../contexts/userEntryContext"
+import { UserContext } from "../contexts/UserProvider"
 import Navbar from "../components/Navbar"
-import "../styles.css"
+import "../styles/styles.css"
 
 function FilteredEntries() {
-    const {searchResults} = useEntries()
+    const { searchResults } = useContext(UserContext)
 
     return (
         <>

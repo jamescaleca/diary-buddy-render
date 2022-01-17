@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { useEntries } from '../contexts/userEntryContext.js'
 import { UserContext } from '../contexts/UserProvider.js'
-import '../styles.css'
+import '../styles/styles.css'
 
 function AddEntryForm(props) {
     // const [inputs, setInputs] = useState(initInputs)

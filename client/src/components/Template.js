@@ -3,6 +3,7 @@ import {TemplateContext} from "../contexts/templateContext"
 import { useEntries } from "../contexts/userEntryContext"
 import { UserContext } from "../contexts/UserProvider"
 import Navbar from "./Navbar"
+import '../styles/styles.css'
 
 function TemplateOne(props) {
     const { submitBtnRedirect } = useEntries()

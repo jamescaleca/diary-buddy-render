@@ -1,6 +1,6 @@
 import React from "react"
 import Navbar from "./Navbar"
-import "../styles.css"
+import "../styles/styles.css"
 import { Link } from "react-router-dom"
 import templateOne from "../assets/TemplateOne.png"
 import templateTwo from "../assets/TemplateTwo.png"
@@ -9,7 +9,6 @@ import templateThree from "../assets/TemplateThree.png"
 function Templates() {
     return (
         <>
-            <Navbar />
             <div className='content'>
                 <div className='content-container'>
                     <h2 className='content-h2'>Don't know where to start?</h2>

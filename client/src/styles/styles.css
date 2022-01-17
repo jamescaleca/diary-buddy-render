@@ -1,1 +1,536 @@
-/* No CSS *//*# sourceMappingURL=styles.css.map */
+@import url("https://fonts.googleapis.com/css2?family=Kaisei+Opti&family=Ubuntu:wght@500&display=swap");
+:root {
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: black;
+}
+
+.app {
+  margin: 0;
+  font-family: "Kaisei Opti", serif;
+  line-height: 1.6;
+}
+
+.app h1,
+.app h2,
+.app h3,
+.app h4,
+.app h5,
+.app h6 {
+  font-family: "Ubuntu", sans-serif;
+}
+
+.app p {
+  font-family: "Kaisei Opti", serif;
+  font-size: .7em;
+  color: #f3eed9;
+  background-color: rgba(6, 65, 13, 0.808);
+}
+
+.app hr {
+  width: 75%;
+}
+
+.app .content-h1,
+.app .content-h2,
+.app .content-h3,
+.app .content-h4,
+.app .new-entry-form label {
+  color: #f3eed9;
+  text-shadow: 2px 2px #222c2a;
+}
+
+.app .form-search-bar input[type=text],
+.app .new-entry-form input[type=text],
+.app .new-entry-form input[type=date],
+.app .new-entry-form select, .app option {
+  padding: 6px;
+  width: 18em;
+  margin-top: 0;
+  color: #f3eed9;
+  text-shadow: 1px 1px #222c2a;
+}
+
+.app header {
+  background: rgba(7, 104, 20, 0.8);
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  padding: 0;
+}
+
+.app header .logo-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: .7em;
+  margin-bottom: .7em;
+}
+
+.app header .logo-container .logo {
+  max-width: 7em;
+  height: auto;
+}
+
+.app header nav {
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  -webkit-transform: scale(1, 0);
+          transform: scale(1, 0);
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  -webkit-transition: -webkit-transform 400ms ease-in-out;
+  transition: -webkit-transform 400ms ease-in-out;
+  transition: transform 400ms ease-in-out;
+  transition: transform 400ms ease-in-out, -webkit-transform 400ms ease-in-out;
+  background: rgba(7, 104, 20, 0.8);
+}
+
+.app header nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.app header nav ul li {
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+
+.app header nav ul li .nav-link:hover {
+  color: #000;
+}
+
+.app header nav ul .form-search-bar {
+  background-color: #fff;
+  text-align: center;
+  height: auto;
+  width: 23em;
+  background: transparent;
+}
+
+.app header nav ul .form-search-bar form .search-button,
+.app header nav ul .form-search-bar form .search-bar {
+  background: transparent;
+  -webkit-box-shadow: 2px 2px 2px 1px #222c2a;
+          box-shadow: 2px 2px 2px 1px #222c2a;
+}
+
+.app header nav ul .form-search-bar form .search-button:hover {
+  color: #000;
+}
+
+.app header .nav-toggle {
+  display: none;
+}
+
+.app header .nav-toggle:checked ~ nav {
+  -webkit-transform: scale(1, 1);
+          transform: scale(1, 1);
+}
+
+.app header .nav-toggle:checked ~ nav .nav-link {
+  opacity: 1;
+  -webkit-transition: opacity 250ms ease-in-out 250ms;
+  transition: opacity 250ms ease-in-out 250ms;
+}
+
+.app header .nav-toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 1em;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.app header .nav-toggle-label span,
+.app header .nav-toggle-label span::before,
+.app header .nav-toggle-label span::after {
+  display: block;
+  background: white;
+  height: 2px;
+  width: 2em;
+  border-radius: 2px;
+  position: relative;
+}
+
+.app header .nav-toggle-label span::before,
+.app header .nav-toggle-label span::after {
+  content: '';
+  position: absolute;
+}
+
+.app header .nav-toggle-label span::before {
+  bottom: 7px;
+}
+
+.app header .nav-toggle-label span::after {
+  top: 7px;
+}
+
+.app .content {
+  position: relative;
+  height: auto;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+.app .content:before {
+  min-height: 100vh;
+  content: '';
+  background-image: url("https://picsum.photos/1500/1800");
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: .75;
+}
+
+.app .content .content-container {
+  position: relative;
+  background-color: rgba(6, 65, 13, 0.644);
+  padding: 30px;
+  max-width: 50em;
+  place-items: center;
+  display: -ms-grid;
+  display: grid;
+  height: auto;
+  margin-top: 94px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.app .content .content-container * {
+  position: relative;
+  font-size: 2rem;
+}
+
+.app .content .content-container .templates-list,
+.app .content .content-container .search-results {
+  list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-left: 0;
+}
+
+.app .content .content-container .templates-list li *,
+.app .content .content-container .search-results li *,
+.app .content .content-container .all-entries li * {
+  color: #f3eed9;
+  text-decoration: none;
+}
+
+.app .content .content-container .new-entry-form {
+  margin-top: 0;
+  margin-bottom: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.app .content .content-container .new-entry-form * {
+  padding: .8em;
+}
+
+.app .content .content-container .new-entry-form input, .app .content .content-container .new-entry-form select {
+  background: #076814;
+  font-size: 1.2rem;
+}
+
+.app .content .content-container .new-entry-form label {
+  font-size: 1.8rem;
+}
+
+.app .content .content-container .scratch-pad-form {
+  height: auto;
+  margin-bottom: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.app .content .content-container .scratch-pad,
+.app .content .content-container .new-entry-form textarea {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  background: rgba(122, 122, 122, 0.801);
+  width: 30em;
+  height: 7em;
+  color: var(--clr-primary-200);
+  font-size: .5em;
+  border-radius: 2px;
+  border: 2px solid var(--clr-neutral-100);
+  -webkit-box-shadow: 2px 2px 2px 1px var(--clr-neutral-900);
+          box-shadow: 2px 2px 2px 1px var(--clr-neutral-900);
+}
+
+.app .content .content-container .scratch-pad[type=text],
+.app .content .content-container .new-entry-form input[type=text] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.app .content .content-container .all-entries {
+  list-style: none;
+  background-color: rgba(122, 122, 122, 0.801);
+  padding-left: 0;
+  /* padding-right: 50px; */
+  margin-top: 0;
+}
+
+.app .content .content-container .all-entries .entry {
+  color: #f3eed9;
+  margin-top: 3em;
+  min-width: 700px;
+}
+
+.app .content .content-container .all-entries .entry p {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.app .content .content-container .all-entries .entry p b {
+  color: #f3eed9;
+  font-weight: 1000;
+}
+
+.app .content .content-container .all-entries .entry p .prompt-entry {
+  background-color: rgba(6, 65, 13, 0.808);
+  color: var(--clr-primary-200);
+  font-size: .75em;
+  padding: 2px 7px;
+}
+
+.app .content .content-container .all-entries .entry .entry-image-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.app .content .content-container .all-entries .entry .entry-image-container .entry-image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-height: auto;
+  max-width: 500px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.app .content .content-container .all-entries .entry .affirmation {
+  margin: 3px 5px;
+  text-align: center;
+  background-color: rgba(82, 82, 82, 0.452);
+}
+
+.app .content .content-container .all-entries .entry .entry-btn-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.app .content .content-container .templates-list li .template-image {
+  height: auto;
+  width: 400px;
+  padding: 20px;
+  background-color: rgba(6, 65, 13, 0.644);
+}
+
+.app .submit-btn,
+.app .back-btn,
+.app .delete-btn,
+.app .edit-btn {
+  padding: .8em;
+  text-decoration: none;
+  font-size: 1rem;
+  color: #f3eed9;
+  background: #076814;
+  text-shadow: 2px 2px #222c2a;
+}
+
+.app .nav-link,
+.app .search-button,
+.app .sp-submit-btn,
+.app .delete-btn,
+.app .edit-btn,
+.app .logout-btn {
+  color: #222c2a;
+  text-decoration: none;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  opacity: 0;
+  -webkit-transition: opacity 150ms ease-in-out;
+  transition: opacity 150ms ease-in-out;
+}
+
+.app .sp-submit-btn:hover,
+.app .delete-btn:hover,
+.app .edit-btn:hover,
+.app .logout-btn:hover,
+.app .member-btn:hover {
+  color: #fff;
+}
+
+.app .sp-submit-btn,
+.app .logout-btn,
+.app .member-btn {
+  background: rgba(7, 104, 20, 0.8);
+  color: #f3eed9;
+  -webkit-box-shadow: 2px 2px 2px 1px #222c2a;
+          box-shadow: 2px 2px 2px 1px #222c2a;
+  padding-left: .8em;
+  padding-right: .8em;
+  text-shadow: 2px 2px #222c2a;
+}
+
+.app .search-button > *,
+.app .sp-submit-btn > *,
+.app .logout-btn > * {
+  padding: .8em;
+  text-decoration: none;
+  font-size: 1rem;
+  background: transparent;
+  color: #f3eed9;
+  text-shadow: 2px 2px #222c2a;
+}
+
+@media screen and (min-width: 800px) {
+  .app .content .content-container .all-entries {
+    max-width: 22em;
+  }
+  .app .nav-link,
+  .app .search-button,
+  .app .sp-submit-btn,
+  .app .edit-btn,
+  .app .delete-btn,
+  .app .logout-btn {
+    opacity: 1;
+    position: relative;
+  }
+  .app header {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr auto minmax(600px, 3fr) 1fr;
+        grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+  }
+  .app header .nav-toggle-label {
+    display: none;
+  }
+  .app header .logo-container .logo {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1 / 2;
+  }
+  .app header nav {
+    all: unset;
+    -ms-grid-column: 3;
+    -ms-grid-column-span: 2;
+    grid-column: 3 / 5;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-right: 1em;
+  }
+  .app header nav ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .app header nav ul li {
+    margin-bottom: 0;
+  }
+  .app header nav ul li .nav-link::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background: black;
+    position: absolute;
+    top: -.75em;
+    left: 0;
+    right: 0;
+    -webkit-transform: scale(0, 1);
+            transform: scale(0, 1);
+    -webkit-transition: -webkit-transform ease-in-out 250ms;
+    transition: -webkit-transform ease-in-out 250ms;
+    transition: transform ease-in-out 250ms;
+    transition: transform ease-in-out 250ms, -webkit-transform ease-in-out 250ms;
+  }
+  .app header nav ul li .nav-link:hover::before {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+}
+/*# sourceMappingURL=styles.css.map */

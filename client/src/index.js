@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from "react-router-dom"
 import { EntriesContextProvider } from "./contexts/userEntryContext"
 import { TemplateContextProvider } from "./contexts/templateContext"
 import UserProvider from './contexts/UserProvider'
-import "./styles.css"
+import "./styles/styles.css"
 
 ReactDOM.render(
     <Router>

@@ -14,10 +14,10 @@ import { TemplateContext } from "./contexts/templateContext"
 
 export default function App() {
     const { token } = useContext(UserContext)
-    const { dailyAffirmation, dailyPromptOne, dailyPromptTwo, dailyPromptThree } = useContext(TemplateContext)
+    const { dailyPromptOne, dailyPromptTwo, dailyPromptThree } = useContext(TemplateContext)
 
     return (
-        <>
+        <div className='app'>
             {token && <Navbar />}
             <Switch>
                 <Route 
@@ -76,6 +76,6 @@ export default function App() {
                     token={token}
                 />
             </Switch>
-        </>
+        </div>
     )
 }

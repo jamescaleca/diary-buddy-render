@@ -1,7 +1,7 @@
 import React from "react"
 import AddEntryForm from "./AddEntryForm"
 import Navbar from "./Navbar"
-import "../styles.css"
+import "../styles/styles.css"
 
 function BlankEntryPage() {
     return (

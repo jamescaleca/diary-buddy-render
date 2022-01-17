@@ -4,12 +4,12 @@ import { EntriesContext } from "../contexts/userEntryContext"
 import { UserContext } from "../contexts/UserProvider"
 // import Logo from "../assets/Logo.png"
 import DiaryLogo from "../assets/DiaryLogo.svg"
-import "../styles.css"
+import "../styles/styles.css"
 
 function Navbar() {
-    const { filterEntries, search, setSearch } = useContext(EntriesContext)
+    // const { filterEntries, search, setSearch } = useContext(EntriesContext)
 
-    const { logout, user: { username } } = useContext(UserContext)
+    const { logout, user: { username }, filterEntries, search, setSearch } = useContext(UserContext)
 
     return (
         <header>

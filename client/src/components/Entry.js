@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import AddEntryForm from "./AddEntryForm"
-import "../styles.css"
+import "../styles/styles.css"
 import { useEntries } from "../contexts/userEntryContext"
 
 function Entry(props) {

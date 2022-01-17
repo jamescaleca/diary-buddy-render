@@ -36,6 +36,8 @@ export default function UserProvider(props) {
     const [ editToggle, setEditToggle ] = useState(false)
     const [userState, setUserState] = useState(initState)
     const [inputs, setInputs] = useState(initInputs)
+    const [search, setSearch] = useState('')
+    const [searchData, setSearchData] = useState([])
 
     function toggle(){setEditToggle(prevToggle => !prevToggle)}
 
@@ -104,6 +106,32 @@ export default function UserProvider(props) {
             .catch(err => console.log(err.response.data.errMsg))
     }
 
+    // Search User Entries
+    const filterEntries = (e) => {
+        userAxios
+            .get(`/api/entries/search?entry=${search}`)
+            .then(res => {
+                const searchData = res.data
+                setSearchData(searchData)
+            })
+            .catch(err => console.log(err))
+    }
+
+    const searchResults = searchData.length > 0 ? 
+        searchData.map(entry => (
+            <li className='search-entry-li' key={entry._id}>
+                <Entry
+                    {...entry}
+                    key={entry.title}
+                    deleteEntry={deleteEntry}
+                    editEntry={editEntry}
+                />
+            </li>
+        )) :
+        <>
+            <h3>No results</h3>
+        </>
+
     // Post new entry
     function postEntry(newEntry) {
         console.log("post new entry", newEntry)
@@ -169,7 +197,13 @@ export default function UserProvider(props) {
                 setInputs,
                 userAxios,
                 allEntries,
-                initInputs
+                initInputs,
+                searchResults,
+                filterEntries,
+                search,
+                setSearch,
+                searchData,
+                setSearchData
             }}
         >{props.children}
         </UserContext.Provider>
