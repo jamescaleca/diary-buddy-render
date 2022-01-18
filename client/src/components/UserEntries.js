@@ -10,14 +10,12 @@ function UserEntries() {
     }, [])
 
     return (
-        <>
-            <div className='content'>
-                <div className='content-container'>
-                    <h1 className='content-h1'>Your entries</h1>
-                    <ul className='all-entries'>{allEntries}</ul>
-                </div>
+        <div className='content'>
+            <div className='content-container'>
+                <h1 className='content-h1'>Your entries</h1>
+                <ul className='all-entries'>{allEntries}</ul>
             </div>
-        </>
+        </div>
     )
 }
 

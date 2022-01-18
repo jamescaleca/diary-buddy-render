@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import { useEntries } from '../contexts/userEntryContext.js'
 import { UserContext } from '../contexts/UserProvider.js'
 import '../styles/styles.css'

@@ -11,6 +11,10 @@
   color: black;
 }
 
+body {
+  margin: 0;
+}
+
 .app {
   margin: 0;
   font-family: "Kaisei Opti", serif;
@@ -212,16 +216,18 @@
 .app .content .content-container {
   position: relative;
   background-color: rgba(6, 65, 13, 0.644);
-  padding: 30px;
-  max-width: 50em;
+  padding: 0px 10px;
+  width: 100%;
   place-items: center;
-  display: -ms-grid;
-  display: grid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   height: auto;
-  margin-top: 94px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  margin-top: 80px;
 }
 
 .app .content .content-container * {
@@ -229,8 +235,18 @@
   font-size: 2rem;
 }
 
-.app .content .content-container .templates-list,
-.app .content .content-container .search-results {
+.app .content .content-container .content-h2,
+.app .content .content-container .content-h3,
+.app .content .content-container .content-h4 {
+  text-align: center;
+  margin: 5px 0px;
+}
+
+.app .content .content-container .affirmation-cont {
+  background-color: rgba(82, 82, 82, 0.705);
+}
+
+.app .content .content-container .templates-list {
   list-style-type: none;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -245,8 +261,14 @@
   padding-left: 0;
 }
 
+.app .content .content-container .templates-list li .template-image {
+  height: auto;
+  width: 400px;
+  padding: 20px;
+  background-color: rgba(6, 65, 13, 0.644);
+}
+
 .app .content .content-container .templates-list li *,
-.app .content .content-container .search-results li *,
 .app .content .content-container .all-entries li * {
   color: #f3eed9;
   text-decoration: none;
@@ -254,7 +276,7 @@
 
 .app .content .content-container .new-entry-form {
   margin-top: 0;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -262,10 +284,19 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .app .content .content-container .new-entry-form * {
   padding: .8em;
+}
+
+.app .content .content-container .new-entry-form p {
+  margin-top: 0;
+  font-size: 1.25rem;
+  text-align: center;
 }
 
 .app .content .content-container .new-entry-form input, .app .content .content-container .new-entry-form select {
@@ -309,12 +340,12 @@
   background: rgba(122, 122, 122, 0.801);
   width: 30em;
   height: 7em;
-  color: var(--clr-primary-200);
+  color: #f3eed9;
   font-size: .5em;
   border-radius: 2px;
-  border: 2px solid var(--clr-neutral-100);
-  -webkit-box-shadow: 2px 2px 2px 1px var(--clr-neutral-900);
-          box-shadow: 2px 2px 2px 1px var(--clr-neutral-900);
+  border: 2px solid #fff;
+  -webkit-box-shadow: 2px 2px 2px 1px #222c2a;
+          box-shadow: 2px 2px 2px 1px #222c2a;
 }
 
 .app .content .content-container .scratch-pad[type=text],
@@ -331,37 +362,42 @@
 }
 
 .app .content .content-container .all-entries {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   list-style: none;
   background-color: rgba(122, 122, 122, 0.801);
   padding-left: 0;
-  /* padding-right: 50px; */
+  width: auto;
   margin-top: 0;
 }
 
-.app .content .content-container .all-entries .entry {
+.app .content .content-container .all-entries li .entry {
   color: #f3eed9;
-  margin-top: 3em;
-  min-width: 700px;
+  margin-top: .4em;
+  max-width: 50em;
 }
 
-.app .content .content-container .all-entries .entry p {
+.app .content .content-container .all-entries li .entry p {
   margin-left: 1em;
   margin-right: 1em;
+  font-size: .7em;
 }
 
-.app .content .content-container .all-entries .entry p b {
+.app .content .content-container .all-entries li .entry p b {
   color: #f3eed9;
   font-weight: 1000;
+  font-size: 1em;
 }
 
-.app .content .content-container .all-entries .entry p .prompt-entry {
+.app .content .content-container .all-entries li .entry p .prompt-entry {
   background-color: rgba(6, 65, 13, 0.808);
-  color: var(--clr-primary-200);
+  color: #f3eed9;
   font-size: .75em;
   padding: 2px 7px;
 }
 
-.app .content .content-container .all-entries .entry .entry-image-container {
+.app .content .content-container .all-entries li .entry .entry-image-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -370,7 +406,7 @@
           justify-content: center;
 }
 
-.app .content .content-container .all-entries .entry .entry-image-container .entry-image {
+.app .content .content-container .all-entries li .entry .entry-image-container .entry-image {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -381,35 +417,35 @@
           justify-content: center;
 }
 
-.app .content .content-container .all-entries .entry .affirmation {
+.app .content .content-container .all-entries li .entry .affirmation {
   margin: 3px 5px;
   text-align: center;
   background-color: rgba(82, 82, 82, 0.452);
 }
 
-.app .content .content-container .all-entries .entry .entry-btn-container {
+.app .content .content-container .all-entries li .entry .entry-btn-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
-.app .content .content-container .templates-list li .template-image {
-  height: auto;
-  width: 400px;
-  padding: 20px;
-  background-color: rgba(6, 65, 13, 0.644);
+.app .content .content-container .all-entries li .entry .entry-btn-container .delete-btn,
+.app .content .content-container .all-entries li .entry .entry-btn-container .edit-btn {
+  padding: .3em;
+  text-decoration: none;
+  font-size: 20px;
+  color: #f3eed9;
+  background: #076814;
+  text-shadow: 2px 2px #222c2a;
 }
 
 .app .submit-btn,
-.app .back-btn,
-.app .delete-btn,
-.app .edit-btn {
-  padding: .8em;
+.app .back-btn {
+  padding: .3em;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 10px;
   color: #f3eed9;
   background: #076814;
   text-shadow: 2px 2px #222c2a;
@@ -423,9 +459,8 @@
 .app .logout-btn {
   color: #222c2a;
   text-decoration: none;
-  font-size: 1.2rem;
   text-transform: uppercase;
-  opacity: 0;
+  opacity: 1;
   -webkit-transition: opacity 150ms ease-in-out;
   transition: opacity 150ms ease-in-out;
 }
@@ -471,7 +506,6 @@
   .app .edit-btn,
   .app .delete-btn,
   .app .logout-btn {
-    opacity: 1;
     position: relative;
   }
   .app header {

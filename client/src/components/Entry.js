@@ -61,9 +61,6 @@ function Entry(props) {
                     <div className='prompt-entry'>{entry}</div>
                 }
             </p>
-            
-            
-            {/* <p>{text === "" ? null : <>Text: {text}</>}</p> */}
         
             <div className='entry-btn-container'>
                 <button className="delete-btn" onClick={() => deleteEntry(_id)}>              

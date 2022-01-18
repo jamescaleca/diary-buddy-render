@@ -1,4 +1,4 @@
-import React, {createContext, useState} from "react"
+import React, { createContext } from "react"
 import affirmations from "../components/affirmationData.js"
 import journalPromptsOne from "../components/promptsDataOne.js"
 import journalPromptsTwo from "../components/promptsDataTwo.js"

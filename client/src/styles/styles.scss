@@ -22,6 +22,10 @@ $ff-secondary: 'Kaisei Opti', serif;
     color: black;
 }
 
+body { 
+    margin: 0;
+}
+
 .app {
     margin: 0;
     font-family: $ff-secondary;
@@ -184,27 +188,46 @@ $ff-secondary: 'Kaisei Opti', serif;
         .content-container {
             position: relative;
             background-color:rgba(6, 65, 13, 0.644);
-            padding: 30px;
-            max-width: 50em;
+            padding: 0px 10px;
+            // max-width: 50em;
+            width: 100%;
             place-items: center;
-            display: grid;
+            display: flex;
+            flex-direction: column;
             height: auto;
-            margin-top: 94px;
-            justify-content: center;
+            margin-top: 80px;
+            
+            // justify-content: center;
             * {
+                // justify-content: center;
                 position: relative;
                 font-size: 2rem;
             }
-            .templates-list,
-            .search-results {
+            .content-h2,
+            .content-h3,
+            .content-h4 {
+                text-align: center;
+                margin: 5px 0px;
+            }
+            .affirmation-cont {
+                background-color:rgba(82, 82, 82, 0.705);
+            }
+            .templates-list {
                 list-style-type: none;
                 display: flex;
                 justify-content: center;
                 flex-direction: column;
                 padding-left: 0;
+                li {
+                    .template-image {
+                        height: auto;
+                        width: 400px;
+                        padding: 20px;
+                        background-color:rgba(6, 65, 13, 0.644);
+                    }
+                }
             }
             .templates-list li,
-            .search-results li,
             .all-entries li {
                 * {
                     color: $clr-primary-200;
@@ -213,11 +236,18 @@ $ff-secondary: 'Kaisei Opti', serif;
             }
             .new-entry-form {
                 margin-top: 0;
-                margin-bottom: 2em;
+                margin-bottom: 1em;
                 display: flex;
                 flex-direction: column;
+                align-items: center;
                 * {
                     padding: .8em;
+                }
+                
+                p {
+                    margin-top: 0;
+                    font-size: 1.25rem;
+                    text-align: center;
                 }
                 input, select {
                     background: rgb(7, 104, 20);
@@ -243,11 +273,11 @@ $ff-secondary: 'Kaisei Opti', serif;
                 background: rgba(122, 122, 122, 0.801);
                 width: 30em;
                 height: 7em;
-                color: var(--clr-primary-200);
+                color: $clr-primary-200;
                 font-size: .5em;
                 border-radius: 2px;
-                border: 2px solid var(--clr-neutral-100);
-                box-shadow: 2px 2px 2px 1px var(--clr-neutral-900);
+                border: 2px solid $clr-neutral-100;
+                box-shadow: 2px 2px 2px 1px $clr-neutral-900;
             }
             .scratch-pad[type=text],
             .new-entry-form input[type=text] {
@@ -256,69 +286,72 @@ $ff-secondary: 'Kaisei Opti', serif;
                 justify-content: flex-start;
             }
             .all-entries {
+                display: flex;
                 list-style: none;
                 background-color: rgba(122, 122, 122, 0.801);
                 padding-left: 0;
-                /* padding-right: 50px; */
+                width: auto;
                 margin-top: 0;
-                .entry {
-                    color: $clr-primary-200;
-                    margin-top: 3em;
-                    min-width: 700px;
-                    p {
-                        margin-left: 1em;
-                        margin-right: 1em;
-                        b {
-                            color: $clr-primary-200;
-                            font-weight: 1000;
-                        }
-                        .prompt-entry {
-                            background-color:rgba(6, 65, 13, 0.808);
-                            color: var(--clr-primary-200);
-                            font-size: .75em;
-                            padding: 2px 7px;
-                        }
-                    }
-                    .entry-image-container {
-                        display: flex;
-                        justify-content: center;
-                        .entry-image {
-                            display: flex;
-                            max-height: auto;
-                            max-width: 500px;
-                            justify-content: center;
-                        }
-                    }
-                    .affirmation {
-                        margin: 3px 5px;
-                        text-align: center;
-                        background-color:rgba(82, 82, 82, 0.452);
-                    }
-                    .entry-btn-container {
-                        display: flex;
-                        justify-content: center;
-                    }
-                }
-            }
-            .templates-list {
                 li {
-                    .template-image {
-                        height: auto;
-                        width: 400px;
-                        padding: 20px;
-                        background-color:rgba(6, 65, 13, 0.644);
+                    .entry {
+                        color: $clr-primary-200;
+                        margin-top: .4em;
+                        max-width: 50em;
+                        p {
+                            margin-left: 1em;
+                            margin-right: 1em;
+                            font-size: .7em;
+                            b {
+                                color: $clr-primary-200;
+                                font-weight: 1000;
+                                font-size: 1em;
+                            }
+                            .prompt-entry {
+                                background-color:rgba(6, 65, 13, 0.808);
+                                color: $clr-primary-200;
+                                font-size: .75em;
+                                padding: 2px 7px;
+                            }
+                        }
+                        .entry-image-container {
+                            display: flex;
+                            justify-content: center;
+                            .entry-image {
+                                display: flex;
+                                max-height: auto;
+                                max-width: 500px;
+                                justify-content: center;
+                            }
+                        }
+                        .affirmation {
+                            margin: 3px 5px;
+                            text-align: center;
+                            background-color:rgba(82, 82, 82, 0.452);
+                        }
+                        .entry-btn-container {
+                            display: flex;
+                            justify-content: space-around;
+                            .delete-btn,
+                            .edit-btn {
+                                padding: .3em;
+                                text-decoration: none;
+                                font-size: 20px;
+                                color: $clr-primary-200;
+                                background:rgb(7, 104, 20);
+                                text-shadow: 2px 2px $clr-neutral-900;
+                            }
+
+                        }
                     }
                 }
             }
         }
     }
     .submit-btn,
-    .back-btn,
-    .delete-btn,
-    .edit-btn {
-        padding: .8em;
+    .back-btn {
+        padding: .3em;
         text-decoration: none;
-        font-size: 1rem;
+        font-size: 10px;
         color: $clr-primary-200;
         background:rgb(7, 104, 20);
         text-shadow: 2px 2px $clr-neutral-900;
@@ -331,9 +364,9 @@ $ff-secondary: 'Kaisei Opti', serif;
     .logout-btn {
         color: $clr-neutral-900;
         text-decoration: none;
-        font-size: 1.2rem;
+        // font-size: 1.2rem;
         text-transform: uppercase;
-        opacity: 0;
+        opacity: 1;
         transition: opacity 150ms ease-in-out;
     }
     .sp-submit-btn:hover,
@@ -380,7 +413,6 @@ $ff-secondary: 'Kaisei Opti', serif;
         .edit-btn,
         .delete-btn,
         .logout-btn {
-            opacity: 1;
             position: relative;
         }
         header {

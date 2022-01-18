@@ -1,7 +1,5 @@
 import React, { useContext } from "react"
-import { useEntries } from "../contexts/userEntryContext"
 import { UserContext } from "../contexts/UserProvider"
-import Navbar from "../components/Navbar"
 import "../styles/styles.css"
 
 function FilteredEntries() {
@@ -9,11 +7,10 @@ function FilteredEntries() {
 
     return (
         <>
-            <Navbar />
             <div className='content'>
                 <div className='content-container'>
                     <h1 className='content-h1'>Search results</h1>
-                    <ul className='search-results'>{searchResults}</ul>
+                    <ul className='all-entries'>{searchResults}</ul>
                 </div>
             </div>
         </>

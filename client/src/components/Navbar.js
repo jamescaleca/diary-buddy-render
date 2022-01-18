@@ -1,15 +1,11 @@
 import React, { useContext } from "react"
 import { Link } from "react-router-dom"
-import { EntriesContext } from "../contexts/userEntryContext"
 import { UserContext } from "../contexts/UserProvider"
-// import Logo from "../assets/Logo.png"
 import DiaryLogo from "../assets/DiaryLogo.svg"
 import "../styles/styles.css"
 
 function Navbar() {
-    // const { filterEntries, search, setSearch } = useContext(EntriesContext)
-
-    const { logout, user: { username }, filterEntries, search, setSearch } = useContext(UserContext)
+    const { logout, filterEntries, search, setSearch } = useContext(UserContext)
 
     return (
         <header>
