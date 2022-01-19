@@ -33,13 +33,19 @@ export default function UserProvider(props) {
             negative: props.negative || ''
         }
 
-    const [ editToggle, setEditToggle ] = useState(false)
+    // const [ editToggle, setEditToggle ] = useState(false)
     const [userState, setUserState] = useState(initState)
     const [inputs, setInputs] = useState(initInputs)
     const [search, setSearch] = useState('')
     const [searchData, setSearchData] = useState([])
 
-    function toggle(){setEditToggle(prevToggle => !prevToggle)}
+    // function toggle(){setEditToggle(prevToggle => !prevToggle)}
+
+    function handleChange(e) {
+        const { name, value } = e.target
+        setInputs(prevInputs => ({...prevInputs, [name]: value}))
+        console.log("inputs", inputs)
+    }
 
     function signup(credentials) {
         axios.post('/auth/signup', credentials)
@@ -149,9 +155,11 @@ export default function UserProvider(props) {
     // Edit entry
     function editEntry(updates, entryId) {
         userAxios.put(`/api/entries/${entryId}`, updates)
-            .then(res => setUserState(prevState => ({
+            .then(res => 
+                setUserState(prevState => ({
                 ...prevState,
-                entries: prevState.entries.map(entry => entry._id !== entryId ? entry : res.data)
+                entries: prevState.entries.map(entry => 
+                    entry._id !== entryId ? entry : res.data)
             })))
             .catch(err => console.log(err))
             return getUserEntries()
@@ -183,9 +191,11 @@ export default function UserProvider(props) {
         <UserContext.Provider
             value={{
                 ...userState,
-                editToggle,
+                // editToggle,
+                // setEditToggle,
+                handleChange,
                 signup,
-                toggle,
+                // toggle,
                 login,
                 logout,
                 resetAuthErr,

@@ -292,6 +292,8 @@ body {
                 padding-left: 0;
                 width: auto;
                 margin-top: 0;
+                justify-content: center;
+                flex-direction: column;
                 li {
                     .entry {
                         color: $clr-primary-200;

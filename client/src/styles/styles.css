@@ -370,6 +370,13 @@ body {
   padding-left: 0;
   width: auto;
   margin-top: 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .app .content .content-container .all-entries li .entry {

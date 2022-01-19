@@ -11,9 +11,9 @@ function ScratchPad(props) {
             entry: props.entry || ''
         }
 
-    const [inputs, setInputs] = useState(initInputs)
+    // const [inputs, setInputs] = useState(initInputs)
     const { submitBtnRedirect } = useEntries()
-    const { postEntry } = useContext(UserContext)
+    const { postEntry, inputs, setInputs } = useContext(UserContext)
 
     function handleChange(e) {
         const { name, value } = e.target

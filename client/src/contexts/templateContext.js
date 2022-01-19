@@ -7,7 +7,6 @@ import { useEntries } from "../contexts/userEntryContext.js"
 
 const TemplateContext = createContext()
 
-
 function TemplateContextProvider(props) {
     const {history} = useEntries()
     const dateForToday = new Date();
@@ -16,6 +15,8 @@ function TemplateContextProvider(props) {
     function goBack() {
         history.goBack()
     }
+
+    console.log(dateForToday)
 
     const dailyAffirmation =
         // new Date() is a date constructor that gives you the month, day, year, hours, seconds, and milliseconds
@@ -47,6 +48,7 @@ function TemplateContextProvider(props) {
             // handleChange,
             // promptInputs,
             goBack,
+            dateForToday,
             dailyAffirmation,
             dailyPromptOne,
             dailyPromptTwo,
