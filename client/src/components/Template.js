@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect} from "react"
+import React, { useContext, useState } from "react"
 import {TemplateContext} from "../contexts/templateContext"
 import { useEntries } from "../contexts/userEntryContext"
 import { UserContext } from "../contexts/UserProvider"
@@ -40,10 +40,6 @@ function TemplateOne(props) {
         postEntry(promptInputs, props._id)
         submitBtnRedirect()
     }
-
-    useEffect(() => {
-        setPromptInputs(initTemplateInputs)
-    }, [])
 
     return(
         <div className='content'>

@@ -5,7 +5,7 @@ import { useEntries } from "../contexts/userEntryContext"
 import { UserContext } from '../contexts/UserProvider'
 
 function Entry(props) {
-    const {date, location, entry, image, mood, _id, positive, negative, affirmation, prompt} = props
+    const {date, location, entry, image, mood, positive, negative, affirmation, prompt} = props
     const {deleteEntry, submitBtnRedirect} = useEntries()
     const [editToggle, setEditToggle] = useState(false)
     const { editEntry, inputs, setInputs } = useContext(UserContext)

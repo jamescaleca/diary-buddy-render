@@ -7,7 +7,7 @@ function UserEntries() {
 
     useEffect(() => {
         getUserEntries()
-    }, [])
+    }, [getUserEntries])
 
     return (
         <div className='content'>

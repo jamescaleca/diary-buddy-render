@@ -1,13 +1,11 @@
-import React, { useContext, useState, useEffect } from 'react'
-import { useEntries } from '../contexts/userEntryContext.js'
+import React, { useContext } from 'react'
 import { UserContext } from '../contexts/UserProvider.js'
-import { TemplateContext } from '../contexts/templateContext.js'
 import '../styles/styles.css'
 
 function AddEntryForm(props) {
-    const { editToggle, submit, date, location, inputs, positive, negative, entry, image, mood, affirmation, prompt } = props
+    const { editToggle, submit, inputs } = props
 
-    const { handleChange,  setInputs } = useContext(UserContext)
+    const { handleChange } = useContext(UserContext)
 
     console.log(editToggle)
 
