@@ -8,14 +8,14 @@ import UserProvider from './contexts/UserProvider'
 import "./styles/styles.css"
 
 ReactDOM.render(
-    <Router>
-        <UserProvider>
-            <EntriesContextProvider>
-                <TemplateContextProvider>
-                    <App />
-                </TemplateContextProvider>  
-            </EntriesContextProvider>
-        </UserProvider>
-    </Router>, 
-    document.getElementById("root")
+  <Router>
+    <UserProvider>
+      <EntriesContextProvider>
+        <TemplateContextProvider>
+          <App />
+        </TemplateContextProvider>  
+      </EntriesContextProvider>
+    </UserProvider>
+  </Router>, 
+  document.getElementById("root")
 )

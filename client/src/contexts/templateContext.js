@@ -8,56 +8,54 @@ import { useEntries } from "../contexts/userEntryContext.js"
 const TemplateContext = createContext()
 
 function TemplateContextProvider(props) {
-    const {history} = useEntries()
-    const dateForToday = new Date();
-    const dayOfMonth = dateForToday.getDate();
+  const {history} = useEntries()
+  const dateForToday = new Date();
+  const dayOfMonth = dateForToday.getDate();
 
-    function goBack() {
-        history.goBack()
-    }
+  function goBack() {
+    history.goBack()
+  }
 
-    console.log(dateForToday)
+  console.log(dateForToday)
 
-    const dailyAffirmation =
-        // new Date() is a date constructor that gives you the month, day, year, hours, seconds, and milliseconds
-        // The getDate() method returns the day of the month for the specified date according to local time.
-        affirmations.filter(function(message) {
-            // return message.date === dayOfMonth ? message.affirmation : null 
-            if(message.date === dayOfMonth){
-                return message
-            }
-        })
-    
-
-    const dailyPromptOne = journalPromptsOne.filter(function(journalOne){
-        if(journalOne.date === dayOfMonth){return journalOne}
+  const dailyAffirmation =
+    // new Date() is a date constructor that gives you the month, day, year, hours, seconds, and milliseconds
+    // The getDate() method returns the day of the month for the specified date according to local time.
+    affirmations.filter(function(message) {
+      // return message.date === dayOfMonth ? message.affirmation : null 
+      if(message.date === dayOfMonth){
+        return message
+      }
     })
-    
-    const dailyPromptTwo = journalPromptsTwo.filter(function(journalTwo){ 
-        if(journalTwo.date === dayOfMonth){return journalTwo}
-    })
-    
-    const dailyPromptThree = journalPromptsThree.filter(function(journalThree){ 
-        if(journalThree.date === dayOfMonth){return journalThree}
-    })
-    
-    return (
+  
 
-        <TemplateContext.Provider value={{
-            // handleSubmit,
-            // handleChange,
-            // promptInputs,
-            goBack,
-            dateForToday,
-            dailyAffirmation,
-            dailyPromptOne,
-            dailyPromptTwo,
-            dailyPromptThree
-        
-        }}>{props.children}
-        </TemplateContext.Provider>
-        
-    )
+  const dailyPromptOne = journalPromptsOne.filter(function(journalOne){
+    if(journalOne.date === dayOfMonth){return journalOne}
+  })
+  
+  const dailyPromptTwo = journalPromptsTwo.filter(function(journalTwo){ 
+    if(journalTwo.date === dayOfMonth){return journalTwo}
+  })
+  
+  const dailyPromptThree = journalPromptsThree.filter(function(journalThree){ 
+    if(journalThree.date === dayOfMonth){return journalThree}
+  })
+  
+  return (
+    <TemplateContext.Provider value={{
+      // handleSubmit,
+      // handleChange,
+      // promptInputs,
+      goBack,
+      dateForToday,
+      dailyAffirmation,
+      dailyPromptOne,
+      dailyPromptTwo,
+      dailyPromptThree
+    
+    }}>{props.children}
+    </TemplateContext.Provider>
+  )
 }
 
 export {TemplateContextProvider, TemplateContext}

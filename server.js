@@ -17,14 +17,14 @@ app.use(morgan('dev'))
 // Connect to DB //
 
 mongoose.connect(
-    'mongodb://localhost:27017/diary-db',
-    {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useCreateIndex: true,
-        useFindAndModify: false
-    },
-    () => console.log('Connected to the DB')
+  'mongodb://localhost:27017/diary-db',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  },
+  () => console.log('Connected to the DB')
 )
 
 // mongoose.connect(process.env.REACT_APP_MONGODB_URI, 
@@ -36,16 +36,16 @@ mongoose.connect(
 // )
 
 app.use(
-    '/auth',
-    require('./routes/authRouter.js'),
-    expressJwt({
-        secret: secret,
-        algorithms: ['HS256']
-    })
-)
-app.use('/api', expressJwt({
+  '/auth',
+  require('./routes/authRouter.js'),
+  expressJwt({
     secret: secret,
     algorithms: ['HS256']
+  })
+)
+app.use('/api', expressJwt({
+  secret: secret,
+  algorithms: ['HS256']
 }))
 
 // Routes //
@@ -55,18 +55,18 @@ app.use(express.static(path.join(__dirname, 'client', 'build')))
 
 // Error handler //
 app.use((err, req, res, next) => {
-    console.log(err)
-    if(err.name === 'UnauthorizedError'){
-        res.status(err.status)
-    }
-    return res.send({errMsg: err.message})
+  console.log(err)
+  if(err.name === 'UnauthorizedError'){
+    res.status(err.status)
+  }
+  return res.send({errMsg: err.message})
 })
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
 })
 
 // Server listen //
 app.listen(port, () => {
-    console.log('Listening on ' + port)
+  console.log('Listening on ' + port)
 })

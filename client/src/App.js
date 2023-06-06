@@ -13,69 +13,69 @@ import { UserContext } from './contexts/UserProvider'
 import { TemplateContext } from "./contexts/templateContext"
 
 export default function App() {
-    const { token } = useContext(UserContext)
-    const { dailyPromptOne, dailyPromptTwo, dailyPromptThree } = useContext(TemplateContext)
+  const { token } = useContext(UserContext)
+  const { dailyPromptOne, dailyPromptTwo, dailyPromptThree } = useContext(TemplateContext)
 
-    return (
-        <div className='app'>
-            {token && <Navbar />}
-            <Switch>
-                <Route 
-                    exact path='/'
-                    render={() => token ? <Redirect to='/home'/> : <Auth />}
-                />
-                <ProtectedRoute 
-                    path='/home'
-                    component={Home}
-                    redirectTo='/'
-                    token={token}
-                />
-                <ProtectedRoute 
-                    exact path='/templates'
-                    component={Templates}
-                    redirectTo='/'
-                    token={token}
-                />
-                <ProtectedRoute 
-                    exact path='/template-one'
-                    component={Template}
-                    dailyPrompt={dailyPromptOne}
-                    redirectTo='/'
-                    token={token}
-                />
-                <ProtectedRoute 
-                    exact path='/template-two'
-                    component={Template}
-                    dailyPrompt={dailyPromptTwo}
-                    redirectTo='/'
-                    token={token}
-                />
-                <ProtectedRoute 
-                    exact path='/template-three'
-                    component={Template}
-                    dailyPrompt={dailyPromptThree}
-                    redirectTo='/'
-                    token={token}
-                />
-                <ProtectedRoute 
-                    exact path='/api/entries' 
-                    component={UserEntries}
-                    redirectTo='/'
-                    token={token}
-                />
-                <ProtectedRoute 
-                    exact path='/search'
-                    component={FilteredEntries}
-                    redirectTo='/'
-                    token={token}
-                />
-                <ProtectedRoute 
-                    exact path='/new-entry'
-                    component={BlankEntryPage}
-                    redirectTo='/'
-                    token={token}
-                />
-            </Switch>
-        </div>
-    )
+  return (
+    <div className='app'>
+      {token && <Navbar />}
+      <Switch>
+        <Route 
+          exact path='/'
+          render={() => token ? <Redirect to='/home'/> : <Auth />}
+        />
+        <ProtectedRoute 
+          path='/home'
+          component={Home}
+          redirectTo='/'
+          token={token}
+        />
+        <ProtectedRoute 
+          exact path='/templates'
+          component={Templates}
+          redirectTo='/'
+          token={token}
+        />
+        <ProtectedRoute 
+          exact path='/template-one'
+          component={Template}
+          dailyPrompt={dailyPromptOne}
+          redirectTo='/'
+          token={token}
+        />
+        <ProtectedRoute 
+          exact path='/template-two'
+          component={Template}
+          dailyPrompt={dailyPromptTwo}
+          redirectTo='/'
+          token={token}
+        />
+        <ProtectedRoute 
+          exact path='/template-three'
+          component={Template}
+          dailyPrompt={dailyPromptThree}
+          redirectTo='/'
+          token={token}
+        />
+        <ProtectedRoute 
+          exact path='/api/entries' 
+          component={UserEntries}
+          redirectTo='/'
+          token={token}
+        />
+        <ProtectedRoute 
+          exact path='/search'
+          component={FilteredEntries}
+          redirectTo='/'
+          token={token}
+        />
+        <ProtectedRoute 
+          exact path='/new-entry'
+          component={BlankEntryPage}
+          redirectTo='/'
+          token={token}
+        />
+      </Switch>
+    </div>
+  )
 }
