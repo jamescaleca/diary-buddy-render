@@ -1,5 +1,5 @@
 import React, { useState, createContext, useContext } from "react"
-import {useHistory} from "react-router-dom"
+// import {useHistory} from "react-router-dom"
 import axios from "axios"
 import { UserContext } from './UserProvider'
 import "../styles/styles.css"
@@ -28,11 +28,11 @@ function EntriesContextProvider(props) {
   }
 
   // When entries are submitted, the user will go to the "Your Entries" tab.
-  const history = useHistory()
+  // const history = useHistory()
 
-  function submitBtnRedirect() {
-    history.push('/api/entries')
-  }
+  // function submitBtnRedirect() {
+  //   history.push('/api/entries')
+  // }
 
   return (
     <EntriesContext.Provider value={{
@@ -40,8 +40,8 @@ function EntriesContextProvider(props) {
       editEntry,
       postEntry,
       deleteEntry,
-      history,
-      submitBtnRedirect,
+      // history,
+      // submitBtnRedirect,
     }}>{props.children}
     </EntriesContext.Provider>
   )
