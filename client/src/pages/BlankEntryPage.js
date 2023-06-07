@@ -4,7 +4,7 @@ import { UserContext } from "../contexts/UserProvider"
 import { useEntries } from "../contexts/userEntryContext"
 import "../styles/styles.css"
 
-function BlankEntryPage() {
+export default function BlankEntryPage() {
   const { postEntry, inputs, initInputs, setInputs } = useContext(UserContext)
   const { submitBtnRedirect } = useEntries()
 
@@ -26,5 +26,3 @@ function BlankEntryPage() {
     </div>
   )
 }
-
-export default BlankEntryPage

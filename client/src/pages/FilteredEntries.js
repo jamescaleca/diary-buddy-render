@@ -1,9 +1,17 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
+import { useSearchParams } from "react-router-dom"
 import { UserContext } from "../contexts/UserProvider"
 import "../styles/styles.css"
 
 export default function FilteredEntries() {
-  const { searchResults } = useContext(UserContext)
+  const { searchResults, filterEntries } = useContext(UserContext)
+  const [searchParams] = useSearchParams()
+
+  const entryFilter = searchParams.get("entry")
+
+  useEffect(() => {
+    filterEntries(entryFilter)
+  }, [])
 
   return (
     <div className='content'>

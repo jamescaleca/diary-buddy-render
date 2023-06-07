@@ -12,7 +12,7 @@ export default function Template(props) {
 
   const initTemplateInputs = 
     {
-      affirmation: dailyAffirmation[0].affirmation,
+      affirmation: dailyAffirmation,
       prompt: dailyPrompt,
       date: '',
       location: '',
@@ -46,7 +46,7 @@ export default function Template(props) {
       <div className='content-container'>
         <h3 className='content-h3'>TODAY'S AFFIRMATION</h3> 
         <div className='affirmation-cont'>
-          <h4 className='content-h4'>{dailyAffirmation[0].affirmation}</h4>
+          <h4 className='content-h4'>{dailyAffirmation}</h4>
         </div>
         <form onSubmit={handleSubmit} className='new-entry-form'>
           <label htmlFor='date'>Date this entry </label>

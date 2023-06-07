@@ -27,50 +27,50 @@ export default function App() {
               element={token ? <Navigate to='/home'/> : <AuthPage />}
             />
             <Route 
-              path='/home'
+              path='home'
               element={<ProtectedRoute token={token} redirectTo="/">
                 <Home />
               </ProtectedRoute>}
             />
             <Route 
-              path='/templates'
+              path='templates'
               element={<ProtectedRoute token={token} redirectTo="/">
                 <Templates />
               </ProtectedRoute>}
             />
             <Route 
-              path='/template-one'
+              path='template-one'
               element={<ProtectedRoute token={token} redirectTo="/">
                 <Template dailyPrompt={dailyPromptOne} />
               </ProtectedRoute>}
             />
             <Route 
-              path='/template-two'
+              path='template-two'
               element={<ProtectedRoute token={token} redirectTo="/">
                 <Template dailyPrompt={dailyPromptTwo} />
               </ProtectedRoute>}
             />
             <Route 
-              path='/template-three'
+              path='template-three'
               element={<ProtectedRoute token={token} redirectTo="/">
                 <Template dailyPrompt={dailyPromptThree} />
               </ProtectedRoute>}
             />
             <Route 
-              path='/api/entries' 
+              path='api/entries' 
               element={<ProtectedRoute token={token} redirectTo="/">
                 <UserEntries />
               </ProtectedRoute>}
             />
             <Route 
-              path='/search'
-              component={<ProtectedRoute token={token} redirectTo="/">
+              path='search'
+              element={<ProtectedRoute token={token} redirectTo="/">
                 <FilteredEntries />
               </ProtectedRoute>}
             />
             <Route 
               path='/new-entry'
-              component={<ProtectedRoute token={token} redirectTo="/">
+              element={<ProtectedRoute token={token} redirectTo="/">
                 <BlankEntryPage />
               </ProtectedRoute>}
             />

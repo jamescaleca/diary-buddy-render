@@ -5,7 +5,7 @@ import DiaryLogo from "../assets/DiaryLogo.svg"
 import "../styles/styles.css"
 
 function Navbar() {
-  const { token, logout, filterEntries, search, setSearch } = useContext(UserContext)
+  const { token, logout, search, setSearch } = useContext(UserContext)
 
   return (
     <header>
@@ -31,11 +31,7 @@ function Navbar() {
                   className='search-button'
                   type='submit'
                   value='Search'
-                  onClick={(e) => {
-                    e.preventDefault()
-                    filterEntries()
-                  }}
-                ><Link to='/search'>Search</Link>
+                ><Link to={`/search?entry=${search}`}>Search</Link>
                 </button>
               </form>
             </li>

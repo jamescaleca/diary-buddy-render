@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { UserContext } from '../contexts/UserProvider.js'
 import '../styles/styles.css'
 
-function AddEntryForm(props) {
+export default function AddEntryForm(props) {
   const { editToggle, submit, inputs } = props
 
   const { handleChange } = useContext(UserContext)
@@ -11,7 +11,7 @@ function AddEntryForm(props) {
 
   return (
     <form onSubmit={submit} className='new-entry-form'>
-      <label for='date'>Today's Date</label>
+      <label htmlFor='date'>Today's Date</label>
       <input 
         value={inputs.date}
         type='date' 
@@ -36,7 +36,7 @@ function AddEntryForm(props) {
         placeholder='Let me hear your thoughts...'
         required={true}
       />
-      <label for='mood'>Mood:</label>
+      <label htmlFor='mood'>Mood:</label>
       <select
         type='text'
         id='mood'
@@ -80,5 +80,3 @@ function AddEntryForm(props) {
     </form> 
   )
 }
-
-export default AddEntryForm

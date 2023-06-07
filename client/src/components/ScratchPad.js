@@ -18,7 +18,6 @@ function ScratchPad(props) {
   function handleChange(e) {
     const { name, value } = e.target
     setInputs(prevInputs => ({...prevInputs, [name]: value}))
-    console.log("inputs", inputs)
   }
 
   function handleSubmit(e) {

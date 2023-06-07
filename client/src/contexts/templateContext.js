@@ -17,14 +17,11 @@ function TemplateContextProvider(props) {
   // }
 
   const dailyAffirmation =
-    // new Date() is a date constructor that gives you the month, day, year, hours, seconds, and milliseconds
-    // The getDate() method returns the day of the month for the specified date according to local time.
     affirmations.filter(function(message) {
-      // return message.date === dayOfMonth ? message.affirmation : null 
       if(message.date === dayOfMonth){
         return message
       }
-    })
+    })[0].affirmation
   
 
   const dailyPromptOne = journalPromptsOne.filter(function(journalOne){
