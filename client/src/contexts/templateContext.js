@@ -1,53 +1,51 @@
-import React, { createContext } from "react"
+import React, { createContext, useState, useEffect } from "react"
 import affirmations from "../components/affirmationData.js"
 import journalPromptsOne from "../components/promptsDataOne.js"
 import journalPromptsTwo from "../components/promptsDataTwo.js"
 import journalPromptsThree from "../components/promptsDataThree.js"
-import { useEntries } from "../contexts/userEntryContext.js"
 
 const TemplateContext = createContext()
 
 function TemplateContextProvider(props) {
-  // const {history} = useEntries()
+  const [dailyPrompts, setDailyPrompts] = useState([])
+  const [dailyAffirmation, setDailyAffirmation] = useState()
   const dateForToday = new Date();
   const dayOfMonth = dateForToday.getDate();
 
-  // function goBack() {
-  //   history.goBack()
-  // }
-
-  const dailyAffirmation =
-    affirmations.filter(function(message) {
+  const getDailyAffirmation = (affirmations) => {
+    const affirmation = affirmations.filter(message => {
       if(message.date === dayOfMonth){
         return message
       }
     })[0].affirmation
+    setDailyAffirmation(affirmation)
+  }
   
 
-  const dailyPromptOne = journalPromptsOne.filter(function(journalOne){
-    if(journalOne.date === dayOfMonth){return journalOne}
-  })[0].prompt
-  
-  const dailyPromptTwo = journalPromptsTwo.filter(function(journalTwo){ 
-    if(journalTwo.date === dayOfMonth){return journalTwo}
-  })[0].prompt
-  
-  const dailyPromptThree = journalPromptsThree.filter(function(journalThree){ 
-    if(journalThree.date === dayOfMonth){return journalThree}
-  })[0].prompt
+  const getDailyPrompt = (journalPrompts) => {
+    const prompt = journalPrompts.filter(journalOne => {
+      if(journalOne.date === dayOfMonth){return journalOne}
+    })[0].prompt
+    return setDailyPrompts((prev) => 
+      [
+        ...prev,
+        prompt
+      ]
+    )
+  }
+
+  useEffect(() => {
+    getDailyAffirmation(affirmations)
+    getDailyPrompt(journalPromptsOne)
+    getDailyPrompt(journalPromptsTwo)
+    getDailyPrompt(journalPromptsThree)
+  }, [])
   
   return (
     <TemplateContext.Provider value={{
-      // handleSubmit,
-      // handleChange,
-      // promptInputs,
-      // goBack,
       dateForToday,
       dailyAffirmation,
-      dailyPromptOne,
-      dailyPromptTwo,
-      dailyPromptThree
-    
+      dailyPrompts
     }}>{props.children}
     </TemplateContext.Provider>
   )

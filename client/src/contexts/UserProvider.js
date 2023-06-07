@@ -44,7 +44,6 @@ export default function UserProvider(props) {
   function handleChange(e) {
     const { name, value } = e.target
     setInputs(prevInputs => ({...prevInputs, [name]: value}))
-    console.log("inputs", inputs)
   }
 
   function signup(credentials) {
@@ -176,7 +175,7 @@ export default function UserProvider(props) {
   }
 
   const allEntries = userState.entries.map(entry => 
-    <li>
+    <li key={`${entry._id}`}>
       <Entry 
         {...entry} 
         key={`${entry._id}`}

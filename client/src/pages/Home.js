@@ -1,5 +1,6 @@
 import React, { useContext } from "react"
 import ScratchPad from "../components/ScratchPad"
+import TemplatesList from "../components/TemplatesList"
 import "../styles/styles.css"
 import { UserContext } from "../contexts/UserProvider"
 import {TemplateContext} from "../contexts/templateContext"
@@ -17,6 +18,8 @@ export default function Home() {
         <hr />
         <h3 className='content-h3'>Ready to write down some thoughts?</h3>
         <ScratchPad />
+        <h3 content-h3>Don't know where to start? Try one of these prompts!</h3>
+        <TemplatesList />
       </div>
     </div>
   )

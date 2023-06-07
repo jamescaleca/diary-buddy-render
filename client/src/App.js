@@ -11,11 +11,9 @@ import Template from "./pages/Template"
 import ProtectedRoute from "./components/ProtectedRoute"
 import Layout from "./components/Layout"
 import { UserContext } from './contexts/UserProvider'
-import { TemplateContext } from "./contexts/templateContext"
 
 export default function App() {
   const { token } = useContext(UserContext)
-  const { dailyPromptOne, dailyPromptTwo, dailyPromptThree } = useContext(TemplateContext)
 
   return (
     <div className='app'>
@@ -39,21 +37,9 @@ export default function App() {
               </ProtectedRoute>}
             />
             <Route 
-              path='template-one'
+              path='prompt'
               element={<ProtectedRoute token={token} redirectTo="/">
-                <Template dailyPrompt={dailyPromptOne} />
-              </ProtectedRoute>}
-            />
-            <Route 
-              path='template-two'
-              element={<ProtectedRoute token={token} redirectTo="/">
-                <Template dailyPrompt={dailyPromptTwo} />
-              </ProtectedRoute>}
-            />
-            <Route 
-              path='template-three'
-              element={<ProtectedRoute token={token} redirectTo="/">
-                <Template dailyPrompt={dailyPromptThree} />
+                <Template />
               </ProtectedRoute>}
             />
             <Route 
@@ -69,7 +55,7 @@ export default function App() {
               </ProtectedRoute>}
             />
             <Route 
-              path='/new-entry'
+              path='new-entry'
               element={<ProtectedRoute token={token} redirectTo="/">
                 <BlankEntryPage />
               </ProtectedRoute>}

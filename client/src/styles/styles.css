@@ -14,35 +14,52 @@ body {
   margin: 0;
 }
 
-.app {
-  margin: 0;
-  font-family: "Kaisei Opti", serif;
-  line-height: 1.6;
-}
-.app h1,
-.app h2,
-.app h3,
-.app h4,
-.app h5,
-.app h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.new-entry-form label {
   font-family: "Ubuntu", sans-serif;
+  color: #f3eed9;
+  text-shadow: 2px 2px #222c2a;
 }
-.app p {
+
+p {
   font-family: "Kaisei Opti", serif;
   font-size: 0.7em;
   color: #f3eed9;
   background-color: rgba(6, 65, 13, 0.808);
 }
+
+.prompts-cards {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  text-align: center;
+}
+.prompts-cards li {
+  background: rgb(12, 129, 26);
+  color: #f3eed9;
+  padding: 1rem 2rem;
+  margin: 0 1rem;
+  width: 25rem;
+  border: 1px solid rgb(13, 13, 13);
+  border-radius: 10px;
+}
+.prompts-cards li a {
+  text-decoration: none;
+  color: #f3eed9;
+}
+
+.app {
+  margin: 0;
+  font-family: "Kaisei Opti", serif;
+  line-height: 1.6;
+}
 .app hr {
   width: 75%;
-}
-.app .content-h1,
-.app .content-h2,
-.app .content-h3,
-.app .content-h4,
-.app .new-entry-form label {
-  color: #f3eed9;
-  text-shadow: 2px 2px #222c2a;
 }
 .app .form-search-bar input[type=text],
 .app .new-entry-form input[type=text],

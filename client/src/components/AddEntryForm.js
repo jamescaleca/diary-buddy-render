@@ -3,11 +3,9 @@ import { UserContext } from '../contexts/UserProvider.js'
 import '../styles/styles.css'
 
 export default function AddEntryForm(props) {
-  const { editToggle, submit, inputs } = props
+  const { submit, inputs } = props
 
   const { handleChange } = useContext(UserContext)
-
-  console.log(editToggle)
 
   return (
     <form onSubmit={submit} className='new-entry-form'>

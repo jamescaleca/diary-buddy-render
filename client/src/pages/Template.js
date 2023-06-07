@@ -1,14 +1,18 @@
 import React, { useContext, useState } from "react"
+import { useLocation, useNavigate } from "react-router-dom"
 import {TemplateContext} from "../contexts/templateContext"
-import { useEntries } from "../contexts/userEntryContext"
 import { UserContext } from "../contexts/UserProvider"
 import '../styles/styles.css'
 
 export default function Template(props) {
-  const { submitBtnRedirect } = useEntries()
   const { editToggle, editEntry, postEntry } = useContext(UserContext)
   const { goBack, dailyAffirmation } = useContext(TemplateContext)
-  const { dailyPrompt } = props
+
+  const location = useLocation()
+
+  const navigate = useNavigate()
+
+  const dailyPrompt = location.state.prompt
 
   const initTemplateInputs = 
     {
@@ -30,7 +34,6 @@ export default function Template(props) {
       ...prevTempInputs, 
       [name]: value
     }))
-    console.log("inputs", promptInputs)
   }
 
   function handleSubmit(e) {
@@ -38,7 +41,7 @@ export default function Template(props) {
     editToggle ?
     editEntry(promptInputs, props._id) :
     postEntry(promptInputs, props._id)
-    submitBtnRedirect()
+    navigate("/api/entries")
   }
 
   return(

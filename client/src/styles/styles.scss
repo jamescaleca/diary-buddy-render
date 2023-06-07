@@ -26,34 +26,52 @@ body {
   margin: 0;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.new-entry-form label {
+  font-family: $ff-primary;
+  color: $clr-primary-200;
+  text-shadow: 2px 2px $clr-neutral-900;
+}
+
+p {
+  font-family: $ff-secondary;
+  font-size: .7em;
+  color: $clr-primary-200;
+  background-color:rgba(6, 65, 13, 0.808);
+}
+
+.prompts-cards {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  text-align: center;
+  li {
+    background: rgb(12, 129, 26);
+    color: $clr-primary-200;
+    padding: 1rem 2rem;
+    margin: 0 1rem;
+    width: 25rem;
+    border: 1px solid rgb(13, 13, 13);
+    border-radius: 10px;
+    a {
+      text-decoration: none;
+      color: $clr-primary-200;
+    }
+  }
+}
+
 .app {
   margin: 0;
   font-family: $ff-secondary;
   line-height: 1.6;
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: $ff-primary;
-  }
-  p {
-    font-family: $ff-secondary;
-    font-size: .7em;
-    color: $clr-primary-200;
-    background-color:rgba(6, 65, 13, 0.808);
-  }
+
   hr {
     width: 75%;
-  }
-  .content-h1,
-  .content-h2,
-  .content-h3,
-  .content-h4,
-  .new-entry-form label {
-    color: $clr-primary-200;
-    text-shadow: 2px 2px $clr-neutral-900;
   }
   .form-search-bar input[type=text],
   .new-entry-form input[type=text],

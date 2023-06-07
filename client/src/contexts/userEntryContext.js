@@ -1,5 +1,5 @@
 import React, { useState, createContext, useContext } from "react"
-// import {useHistory} from "react-router-dom"
+// import { useNavigate } from "react-router-dom"
 import axios from "axios"
 import { UserContext } from './UserProvider'
 import "../styles/styles.css"
@@ -10,6 +10,8 @@ function EntriesContextProvider(props) {
   const [entries, setEntries] = useState([])
 
   const { deleteEntry, editEntry } = useContext(UserContext)
+
+  // const navigate = useNavigate()
 
   function getEntryById(entryId) {
     axios.get(`/api/entries/${entryId}`)
@@ -31,7 +33,7 @@ function EntriesContextProvider(props) {
   // const history = useHistory()
 
   // function submitBtnRedirect() {
-  //   history.push('/api/entries')
+  //   navigate('/api/entries')
   // }
 
   return (
