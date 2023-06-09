@@ -1,14 +1,12 @@
 import React, {useState, useContext } from "react"
 import AddEntryForm from "./AddEntryForm"
 import "../styles/styles.css"
-import { useEntries } from "../contexts/userEntryContext"
 import { UserContext } from '../contexts/UserProvider'
 
 function Entry(props) {
   const {date, location, entry, image, mood, positive, negative, affirmation, prompt} = props
-  const {deleteEntry, submitBtnRedirect} = useEntries()
   const [editToggle, setEditToggle] = useState(false)
-  const { editEntry, inputs, setInputs } = useContext(UserContext)
+  const { editEntry, inputs, setInputs, deleteEntry, submitBtnRedirect } = useContext(UserContext)
 
   const initInputs = {
     date: date || '',

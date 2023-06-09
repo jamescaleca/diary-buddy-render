@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { useEntries } from "../contexts/userEntryContext"
+import { useNavigate } from "react-router-dom"
 import { UserContext } from "../contexts/UserProvider"
 
 import '../styles/styles.css'
@@ -12,8 +12,9 @@ function ScratchPad(props) {
     }
 
   // const [inputs, setInputs] = useState(initInputs)
-  const { submitBtnRedirect } = useEntries()
-  const { postEntry, inputs, setInputs } = useContext(UserContext)
+  const { postEntry, inputs, setInputs, submitBtnRedirect } = useContext(UserContext)
+
+  const navigate = useNavigate()
 
   function handleChange(e) {
     const { name, value } = e.target
@@ -24,7 +25,7 @@ function ScratchPad(props) {
     e.preventDefault()
     postEntry(inputs)
     setInputs(initInputs)
-    submitBtnRedirect()
+    navigate('/api/entries')
   }
 
   return (
