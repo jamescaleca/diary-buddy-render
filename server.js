@@ -41,12 +41,12 @@ app.use(
   '/auth',
   require('./routes/authRouter.js'),
   expressJwt({
-    secret: secret,
+    secret: process.env.REACT_APP_SECRET,
     algorithms: ['HS256']
   })
 )
 app.use('/api', expressJwt({
-  secret: secret,
+  secret: process.env.REACT_APP_SECRET,
   algorithms: ['HS256']
 }))
 
