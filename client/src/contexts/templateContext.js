@@ -20,7 +20,6 @@ function TemplateContextProvider(props) {
     })[0].affirmation
     setDailyAffirmation(affirmation)
   }
-  
 
   const getDailyPrompt = (journalPrompts) => {
     const prompt = journalPrompts.filter(journalOne => {

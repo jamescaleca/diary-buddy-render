@@ -3,7 +3,7 @@ import AddEntryForm from "./AddEntryForm"
 import "../styles/styles.css"
 import { UserContext } from '../contexts/UserProvider'
 
-function Entry(props) {
+export default function Entry(props) {
   const {date, location, entry, image, mood, positive, negative, affirmation, prompt} = props
   const [editToggle, setEditToggle] = useState(false)
   const { editEntry, inputs, setInputs, deleteEntry, submitBtnRedirect } = useContext(UserContext)
@@ -134,5 +134,3 @@ function Entry(props) {
     </>
   )
 }
-
-export default Entry

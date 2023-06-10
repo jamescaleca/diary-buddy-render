@@ -4,7 +4,7 @@ import { UserContext } from "../contexts/UserProvider"
 
 import '../styles/styles.css'
 
-function ScratchPad(props) {
+export default function ScratchPad(props) {
   const initInputs = 
     {
       date: props.date || '',
@@ -45,5 +45,3 @@ function ScratchPad(props) {
     </form>
   )
 }
-
-export default ScratchPad

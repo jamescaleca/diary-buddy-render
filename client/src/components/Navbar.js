@@ -4,7 +4,7 @@ import { UserContext } from "../contexts/UserProvider"
 import DiaryLogo from "../assets/DiaryLogo.svg"
 import "../styles/styles.css"
 
-function Navbar() {
+export default function Navbar() {
   const { token, logout, search, setSearch } = useContext(UserContext)
 
   return (
@@ -61,5 +61,3 @@ function Navbar() {
     </header>
   )
 }
-
-export default Navbar
