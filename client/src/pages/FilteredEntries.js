@@ -11,7 +11,7 @@ export default function FilteredEntries() {
 
   useEffect(() => {
     filterEntries(entryFilter)
-  }, [])
+  })
 
   return (
     <div className='content'>

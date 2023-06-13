@@ -12,7 +12,7 @@ export default function ScratchPad(props) {
     }
 
   // const [inputs, setInputs] = useState(initInputs)
-  const { postEntry, inputs, setInputs, submitBtnRedirect } = useContext(UserContext)
+  const { postEntry, inputs, setInputs } = useContext(UserContext)
 
   const navigate = useNavigate()
 

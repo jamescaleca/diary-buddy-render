@@ -9,7 +9,7 @@ export default function AddEntryForm(props) {
 
   return (
     <form onSubmit={submit} className='new-entry-form'>
-      <label htmlFor='date'>Today's Date</label>
+      <h3>Today's Date</h3>
       <input 
         value={inputs.date}
         type='date' 
@@ -17,7 +17,7 @@ export default function AddEntryForm(props) {
         name='date' 
         onChange={handleChange}
       />
-      <span className='validity'></span>
+      <h3>Location</h3>
       <input 
         type='text'
         name='location'
@@ -26,15 +26,7 @@ export default function AddEntryForm(props) {
         onChange={handleChange}
         placeholder='Location'
       />
-      <textarea 
-        name='entry'
-        className='entry'
-        value={inputs.entry}
-        onChange={handleChange}
-        placeholder='Let me hear your thoughts...'
-        required={true}
-      />
-      <label htmlFor='mood'>Mood:</label>
+      <h3>Mood:</h3>
       <select
         type='text'
         id='mood'
@@ -50,7 +42,18 @@ export default function AddEntryForm(props) {
         <option value='😐meh'>😐meh</option>
         <option value='🙁bad'>🙁bad</option>
         <option value='😢awful'>😢awful</option>
-      </select><br />
+      </select>
+      <h3>Your entry</h3>
+      <textarea 
+        name='entry'
+        className='entry'
+        value={inputs.entry}
+        onChange={handleChange}
+        placeholder='Let me hear your thoughts...'
+        required={true}
+        rows='10'
+        cols='40'
+      />
       <h3 className='content-h3'>Positives:</h3>
       <textarea
         name='positive'

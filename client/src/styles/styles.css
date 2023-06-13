@@ -24,29 +24,64 @@ h6,
   font-family: "Ubuntu", sans-serif;
   color: #f3eed9;
   text-shadow: 2px 2px #222c2a;
+  text-align: center;
+  margin: 5px 0px;
 }
 
 p {
   font-family: "Kaisei Opti", serif;
-  font-size: 0.7em;
   color: #f3eed9;
   background-color: rgba(6, 65, 13, 0.808);
 }
 
+input::-moz-placeholder, textarea::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.6745098039);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6745098039);
+}
+
+textarea {
+  justify-content: flex-start;
+  background: rgba(122, 122, 122, 0.801);
+  color: #f3eed9;
+  width: 22rem;
+  border-radius: 2px;
+  border: 2px solid #fff;
+  box-shadow: 2px 2px 2px 1px #222c2a;
+}
+
+form input[type=text],
+form input[type=date],
+form select, option {
+  padding: 6px;
+  width: 18rem;
+  margin-top: 0;
+  color: #f3eed9;
+  text-shadow: 1px 1px #222c2a;
+}
+
+button {
+  border-radius: 24px;
+}
+
 .prompts-cards {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   list-style-type: none;
   text-align: center;
+  align-items: center;
+  padding: 0;
 }
 .prompts-cards li {
   background: rgb(12, 129, 26);
   color: #f3eed9;
-  padding: 1rem 2rem;
-  margin: 0 1rem;
-  width: 25rem;
+  padding: 1rem;
   border: 1px solid rgb(13, 13, 13);
   border-radius: 10px;
+  width: 100%;
 }
 .prompts-cards li a {
   text-decoration: none;
@@ -61,18 +96,8 @@ p {
 .app hr {
   width: 75%;
 }
-.app .form-search-bar input[type=text],
-.app .new-entry-form input[type=text],
-.app .new-entry-form input[type=date],
-.app .new-entry-form select, .app option {
-  padding: 6px;
-  width: 18em;
-  margin-top: 0;
-  color: #f3eed9;
-  text-shadow: 1px 1px #222c2a;
-}
 .app header {
-  background: rgba(7, 104, 20, 0.8);
+  background: rgb(7, 104, 20);
   text-align: center;
   position: fixed;
   width: 100%;
@@ -82,11 +107,11 @@ p {
 .app header .logo-container {
   display: flex;
   justify-content: center;
-  margin-top: 0.7em;
-  margin-bottom: 0.7em;
+  margin-top: 0.7rem;
+  margin-bottom: 0.7rem;
 }
 .app header .logo-container .logo {
-  width: 7rem;
+  width: 9rem;
 }
 .app header nav {
   position: absolute;
@@ -97,7 +122,7 @@ p {
   transform: scale(1, 0);
   transform-origin: top;
   transition: transform 400ms ease-in-out;
-  background: rgba(7, 104, 20, 0.8);
+  background: rgb(7, 104, 20);
 }
 .app header nav ul {
   list-style-type: none;
@@ -168,13 +193,10 @@ p {
 }
 .app .content {
   position: relative;
-  height: auto;
-  width: 100%;
   display: grid;
-  place-items: center;
+  height: 100vh;
 }
 .app .content:before {
-  min-height: 100vh;
   content: "";
   background-image: url("https://picsum.photos/1500/1800");
   background-size: cover;
@@ -188,26 +210,17 @@ p {
 .app .content .content-container {
   position: relative;
   background-color: rgba(6, 65, 13, 0.644);
-  padding: 0px 10px;
   width: 100%;
   place-items: center;
   display: flex;
   flex-direction: column;
-  height: auto;
-  margin-top: 80px;
-}
-.app .content .content-container * {
-  position: relative;
-  font-size: 2rem;
-}
-.app .content .content-container .content-h2,
-.app .content .content-container .content-h3,
-.app .content .content-container .content-h4 {
-  text-align: center;
-  margin: 5px 0px;
+  margin-top: 4.2rem;
 }
 .app .content .content-container .affirmation-cont {
   background-color: rgba(82, 82, 82, 0.705);
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
 }
 .app .content .content-container .templates-list {
   list-style-type: none;
@@ -235,19 +248,11 @@ p {
   align-items: center;
 }
 .app .content .content-container .new-entry-form * {
-  padding: 0.8em;
-}
-.app .content .content-container .new-entry-form p {
-  margin-top: 0;
-  font-size: 1.25rem;
-  text-align: center;
+  padding: 0.8rem;
 }
 .app .content .content-container .new-entry-form input, .app .content .content-container .new-entry-form select {
   background: rgb(7, 104, 20);
   font-size: 1.2rem;
-}
-.app .content .content-container .new-entry-form label {
-  font-size: 1.8rem;
 }
 .app .content .content-container .scratch-pad-form {
   height: auto;
@@ -256,20 +261,6 @@ p {
   flex-flow: column wrap;
   justify-content: center;
   align-items: center;
-}
-.app .content .content-container .scratch-pad,
-.app .content .content-container .new-entry-form textarea {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  background: rgba(122, 122, 122, 0.801);
-  width: 30em;
-  height: 7em;
-  color: #f3eed9;
-  font-size: 0.5em;
-  border-radius: 2px;
-  border: 2px solid #fff;
-  box-shadow: 2px 2px 2px 1px #222c2a;
 }
 .app .content .content-container .scratch-pad[type=text],
 .app .content .content-container .new-entry-form input[type=text] {
@@ -340,7 +331,6 @@ p {
 .app .back-btn {
   padding: 0.3em;
   text-decoration: none;
-  font-size: 10px;
   color: #f3eed9;
   background: rgb(7, 104, 20);
   text-shadow: 2px 2px #222c2a;
@@ -367,7 +357,7 @@ p {
 .app .sp-submit-btn,
 .app .logout-btn,
 .app .member-btn {
-  background: rgba(7, 104, 20, 0.8);
+  background: rgb(7, 104, 20);
   color: #f3eed9;
   box-shadow: 2px 2px 2px 1px #222c2a;
   padding-left: 0.8em;

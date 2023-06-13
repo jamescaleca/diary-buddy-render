@@ -36,7 +36,7 @@ export default function Navbar() {
               </form>
             </li>
             <li>
-              <Link className='nav-link' to='/templates'>Templates</Link>
+              <Link className='nav-link' to='/templates'>Prompts</Link>
             </li>
             <li>
               <Link className='nav-link' to='/api/entries'>Your entries</Link>

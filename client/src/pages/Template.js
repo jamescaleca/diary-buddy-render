@@ -47,9 +47,9 @@ export default function Template(props) {
   return(
     <div className='content'>
       <div className='content-container'>
-        <h3 className='content-h3'>TODAY'S AFFIRMATION</h3> 
+        <h3>TODAY'S AFFIRMATION</h3> 
         <div className='affirmation-cont'>
-          <h4 className='content-h4'>{dailyAffirmation}</h4>
+          <h4>{dailyAffirmation}</h4>
         </div>
         <form onSubmit={handleSubmit} className='new-entry-form'>
           <label htmlFor='date'>Date this entry </label>
