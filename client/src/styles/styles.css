@@ -53,18 +53,28 @@ textarea {
   box-shadow: 2px 2px 2px 1px #222c2a;
 }
 
-form input[type=text],
-form input[type=date],
+form input,
 form select, option {
   padding: 6px;
   width: 18rem;
   margin-top: 0;
   color: #f3eed9;
-  text-shadow: 1px 1px #222c2a;
 }
 
 button {
   border-radius: 24px;
+  padding: 0.3rem;
+  text-decoration: none;
+  color: #f3eed9;
+  background: rgb(7, 104, 20);
+  text-shadow: 2px 2px #222c2a;
+  text-transform: uppercase;
+  opacity: 1;
+  transition: opacity 150ms ease-in-out;
+}
+
+button:hover {
+  color: #fff;
 }
 
 .prompts-cards {
@@ -86,6 +96,17 @@ button {
 .prompts-cards li a {
   text-decoration: none;
   color: #f3eed9;
+}
+
+#auth-form {
+  display: flex;
+  width: 90%;
+  flex-direction: column;
+  align-items: center;
+}
+#auth-form input {
+  color: rgb(19, 19, 19);
+  margin-bottom: 0.5rem;
 }
 
 .app {
@@ -318,41 +339,12 @@ button {
   display: flex;
   justify-content: space-around;
 }
-.app .content .content-container .all-entries li .entry .entry-btn-container .delete-btn,
-.app .content .content-container .all-entries li .entry .entry-btn-container .edit-btn {
-  padding: 0.3em;
-  text-decoration: none;
-  font-size: 20px;
-  color: #f3eed9;
-  background: rgb(7, 104, 20);
-  text-shadow: 2px 2px #222c2a;
-}
-.app .submit-btn,
-.app .back-btn {
-  padding: 0.3em;
-  text-decoration: none;
-  color: #f3eed9;
-  background: rgb(7, 104, 20);
-  text-shadow: 2px 2px #222c2a;
-}
-.app .nav-link,
-.app .search-button,
-.app .sp-submit-btn,
-.app .delete-btn,
-.app .edit-btn,
-.app .logout-btn {
+.app .nav-link {
   color: #222c2a;
   text-decoration: none;
   text-transform: uppercase;
   opacity: 1;
   transition: opacity 150ms ease-in-out;
-}
-.app .sp-submit-btn:hover,
-.app .delete-btn:hover,
-.app .edit-btn:hover,
-.app .logout-btn:hover,
-.app .member-btn:hover {
-  color: #fff;
 }
 .app .sp-submit-btn,
 .app .logout-btn,
