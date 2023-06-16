@@ -39,6 +39,8 @@ export default function UserProvider(props) {
   const [search, setSearch] = useState('')
   const [searchData, setSearchData] = useState([])
 
+  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
+
   // function toggle(){setEditToggle(prevToggle => !prevToggle)}
 
   function handleChange(e) {
@@ -210,7 +212,8 @@ export default function UserProvider(props) {
         search,
         setSearch,
         searchData,
-        setSearchData
+        setSearchData,
+        timezone
       }}
     >{props.children}
     </UserContext.Provider>

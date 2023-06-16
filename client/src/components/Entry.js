@@ -4,9 +4,26 @@ import "../styles/styles.css"
 import { UserContext } from '../contexts/UserProvider'
 
 export default function Entry(props) {
-  const {date, location, entry, image, mood, positive, negative, affirmation, prompt} = props
+  const {
+    date, 
+    location, 
+    entry, 
+    image, 
+    mood, 
+    positive, 
+    negative, 
+    affirmation, 
+    prompt
+  } = props
   const [editToggle, setEditToggle] = useState(false)
-  const { editEntry, inputs, setInputs, deleteEntry, submitBtnRedirect } = useContext(UserContext)
+  const { 
+    editEntry, 
+    inputs, 
+    setInputs, 
+    deleteEntry, 
+    submitBtnRedirect,
+    timezone
+  } = useContext(UserContext)
 
   const initInputs = {
     date: date || '',
@@ -71,21 +88,31 @@ export default function Entry(props) {
       
       <div className="entry">
         <div className='entry-image-container'>
-          {props.image === '' ? <>{null}</> : props.image === undefined ? <>{null}</> :
-            <img src={props.image} alt='img' className='entry-image'/>
+          {image === '' ? null 
+            : image === undefined ? null 
+            : <img src={image} alt='img' className='entry-image'/>
           }
         </div>
         <h3 className='affirmation'>
-          {props.affirmation === null ? <>{null}</> : props.affirmation === '' ? <>{null}</> : props.affirmation === undefined ? <>{null}</> :
-            <><b>Affirmation: </b><br></br>{props.affirmation}</>
+          {affirmation === null ? <>{null}</> : affirmation === '' ? <>{null}</> : affirmation === undefined ? <>{null}</> :
+            <><b>Affirmation: </b><br></br>{affirmation}</>
           }
         </h3>
         <p>
-          {props.date === null ? <>{null}</> : <><b>Date:</b> {props.date}</> }
+          {date === null ? null 
+            : 
+              <>
+                <b>Date:</b> {new Date(date)
+                  .toLocaleString('en-us', {timeZone: timezone})}
+              </> 
+          }
         </p>
-        {/* date is a string */}
         <p>
-          {props.location === null ? <>{null}</> : props.location === '' ? <>{null}</> : props.location === undefined ? <>{null}</> : <><b>Location:</b> {props.location}</>}
+          {location === null ? null
+            : location === '' ? null 
+            : location === undefined ? null 
+            : <><b>Location:</b> {location}</>
+          }
         </p>
         <p>
           {props.mood === '' ? null : props.mood === undefined ? null : 

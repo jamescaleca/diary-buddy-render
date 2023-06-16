@@ -160,7 +160,8 @@ button:hover {
   margin-left: 1em;
 }
 .app header nav ul li .search-bar {
-  color: rgb(19, 19, 19);
+  color: #f3eed9;
+  background: rgba(122, 122, 122, 0.801);
 }
 .app header nav ul li .nav-link {
   color: #f3eed9;
