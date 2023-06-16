@@ -35,7 +35,6 @@ export default function UserProvider(props) {
 
   // const [ editToggle, setEditToggle ] = useState(false)
   const [userState, setUserState] = useState(initState)
-  const [entries, setEntries] = useState([])
   const [inputs, setInputs] = useState(initInputs)
   const [search, setSearch] = useState('')
   const [searchData, setSearchData] = useState([])
@@ -109,13 +108,7 @@ export default function UserProvider(props) {
         ...prevState,
         entries: res.data
       })))
-      .catch(err => console.log(err.response.data.errMsg))
-  }
-
-  function getEntryById(entryId) {
-    userAxios.get(`/api/entries/${entryId}`)
-      .then(res => setEntries(res.data))
-      .catch(err => console.log(err.response.data.errMsg))
+      .catch(err => console.log(err))
   }
 
   // Search User Entries
@@ -147,7 +140,6 @@ export default function UserProvider(props) {
     console.log("post new entry", newEntry)
     userAxios.post("/api/entries", newEntry)
       .then(res => {
-        // setEntries(prevEntries => [...prevEntries, res.data])
         setUserState(prevState => ({
           ...prevState,
           entries: [...prevState.entries, res.data]
@@ -205,7 +197,6 @@ export default function UserProvider(props) {
         logout,
         resetAuthErr,
         getUserEntries,
-        getEntryById,
         postEntry,
         editEntry,
         deleteEntry,

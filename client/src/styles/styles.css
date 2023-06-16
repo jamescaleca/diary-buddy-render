@@ -32,6 +32,7 @@ p {
   font-family: "Kaisei Opti", serif;
   color: #f3eed9;
   background-color: rgba(6, 65, 13, 0.808);
+  text-align: center;
 }
 
 input::-moz-placeholder, textarea::-moz-placeholder {
@@ -67,7 +68,6 @@ button {
   text-decoration: none;
   color: #f3eed9;
   background: rgb(7, 104, 20);
-  text-shadow: 2px 2px #222c2a;
   text-transform: uppercase;
   opacity: 1;
   transition: opacity 150ms ease-in-out;
@@ -91,11 +91,12 @@ button:hover {
 }
 .prompts-cards li {
   background: rgb(12, 129, 26);
+  margin-bottom: 1rem;
   color: #f3eed9;
   padding: 1rem;
   border: 1px solid rgb(13, 13, 13);
   border-radius: 10px;
-  width: 100%;
+  width: 90%;
 }
 .prompts-cards li a {
   text-decoration: none;
@@ -158,8 +159,14 @@ button:hover {
   margin-bottom: 1em;
   margin-left: 1em;
 }
+.app header nav ul li .search-bar {
+  color: rgb(19, 19, 19);
+}
+.app header nav ul li .nav-link {
+  color: #f3eed9;
+}
 .app header nav ul li .nav-link:hover {
-  color: #000;
+  color: #fff;
 }
 .app header .nav-toggle {
   display: none;
@@ -231,6 +238,7 @@ button:hover {
   border: 1px solid rgb(255, 255, 255);
   border-radius: 10px;
   padding: 0.5rem 1rem;
+  width: 90%;
 }
 .app .content .content-container .templates-list {
   list-style-type: none;
@@ -272,6 +280,9 @@ button:hover {
   justify-content: center;
   align-items: center;
 }
+.app .content .content-container .scratch-pad-form button {
+  margin-top: 0.5rem;
+}
 .app .content .content-container .scratch-pad[type=text],
 .app .content .content-container .new-entry-form input[type=text] {
   display: flex;
@@ -294,14 +305,14 @@ button:hover {
   max-width: 50em;
 }
 .app .content .content-container .all-entries li .entry p {
-  margin-left: 1em;
-  margin-right: 1em;
-  font-size: 0.7em;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  font-size: 1rem;
 }
 .app .content .content-container .all-entries li .entry p b {
   color: #f3eed9;
   font-weight: 1000;
-  font-size: 1em;
+  font-size: 1rem;
 }
 .app .content .content-container .all-entries li .entry p .prompt-entry {
   background-color: rgba(6, 65, 13, 0.808);

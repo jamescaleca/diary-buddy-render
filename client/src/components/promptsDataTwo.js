@@ -56,7 +56,7 @@ const journalPromptsTwo = [
     date: 14
   },
   {
-    prompt: "Think about what triggers your stress, emotions, poor eating habits.",
+    prompt: "What do you think triggers your stress, emotions, poor eating habits?",
     date: 15
   },
   {
