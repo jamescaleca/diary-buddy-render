@@ -1,30 +1,20 @@
-import React, { useContext } from "react"
+import React, { useContext, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import { UserContext } from "../contexts/UserProvider"
+import { TemplateContext } from "../contexts/templateContext"
 
 import '../styles/styles.css'
 
-export default function ScratchPad(props) {
-  const initInputs = 
-    {
-      date: props.date || '',
-      entry: props.entry || ''
-    }
-
-  // const [inputs, setInputs] = useState(initInputs)
-  const { postEntry, inputs, setInputs } = useContext(UserContext)
+export default function ScratchPad() {
+  const { postEntry } = useContext(UserContext)
 
   const navigate = useNavigate()
 
-  function handleChange(e) {
-    const { name, value } = e.target
-    setInputs(prevInputs => ({...prevInputs, [name]: value}))
-  }
+  const scratchPadRef = useRef()
 
   function handleSubmit(e) {
     e.preventDefault()
-    postEntry(inputs)
-    setInputs(initInputs)
+    postEntry({ entry: scratchPadRef.current.value })
     navigate('/api/entries')
   }
 
@@ -37,8 +27,7 @@ export default function ScratchPad(props) {
         rows='10'
         cols='10'
         wrap='soft'
-        value={inputs.entry}
-        onChange={handleChange}
+        ref={scratchPadRef}
         placeholder='Start typing...'
       />
       <button className='sp-submit-btn'>Submit</button>

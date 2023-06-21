@@ -1,29 +1,52 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef } from 'react'
+import { useNavigate } from "react-router-dom"
 import { UserContext } from '../contexts/UserProvider.js'
 import '../styles/styles.css'
 
 export default function AddEntryForm(props) {
-  const { submit, inputs } = props
+  const { submit, inputs, affirmation } = props
 
-  const { handleChange } = useContext(UserContext)
+  const { handleChange, postEntry } = useContext(UserContext)
+
+  const navigate = useNavigate()
+
+
+  const locationRef = useRef()
+  const dateRef = useRef()
+  const moodRef = useRef()
+  const entryRef = useRef()
+  const positiveRef = useRef()
+  const negativeRef = useRef()
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    postEntry({
+      date: dateRef.current.value,
+      affirmation: affirmation,
+      location: locationRef.current.value,
+      entry: entryRef.current.value,
+      mood: moodRef.current.value,
+      positive: positiveRef.current.value,
+      negative: negativeRef.current.value
+    })
+    navigate(`/api/entries`)
+  }
 
   return (
-    <form onSubmit={submit} className='new-entry-form'>
+    <form onSubmit={handleSubmit} className='new-entry-form'>
       <h3>Today's Date</h3>
       <input 
-        value={inputs.date}
         type='date' 
         id='date' 
         name='date' 
-        onChange={handleChange}
+        ref={dateRef}
       />
       <h3>Location</h3>
       <input 
         type='text'
         name='location'
         className='location'
-        value={inputs.location}
-        onChange={handleChange}
+        ref={locationRef}
         placeholder='Location'
       />
       <h3>Mood:</h3>
@@ -32,8 +55,7 @@ export default function AddEntryForm(props) {
         id='mood'
         name='mood'
         className='mood'
-        value={inputs.mood}
-        onChange={handleChange}
+        ref={moodRef}
         placeholder='Mood'
       >
         <option value=''>-Select Mood-</option>
@@ -47,8 +69,7 @@ export default function AddEntryForm(props) {
       <textarea 
         name='entry'
         className='entry'
-        value={inputs.entry}
-        onChange={handleChange}
+        ref={entryRef}
         placeholder='Let me hear your thoughts...'
         required={true}
         rows='10'
@@ -61,8 +82,7 @@ export default function AddEntryForm(props) {
         rows='10'
         cols='40'
         wrap='soft'
-        value={inputs.positive}
-        onChange={handleChange}
+        ref={positiveRef}
         placeholder='Tell me something positive that happened today...'
       ></textarea>
       <h3 className='content-h3'>Negatives:</h3>
@@ -72,8 +92,7 @@ export default function AddEntryForm(props) {
         rows='10'
         cols='40'
         wrap='soft'
-        value={inputs.negative}
-        onChange={handleChange}
+        ref={negativeRef}
         placeholder='Tell me something negative that happened today...'
       ></textarea>
       <br/>
